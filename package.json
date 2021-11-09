@@ -24,6 +24,8 @@
         "rebuild": "npm run clean && npm run build",
         "test": "export NODE_ENV=test && mocha --require ts-node/register test/**/*.test.ts",
         "test:AttributeModule": "export NODE_ENV=test && mocha --require ts-node/register test/AttributeModule.test.ts",
+        "test:MarkerModule": "export NODE_ENV=test && mocha --require ts-node/register test/MarkerModule.test.ts",
+        "test:NameModule": "export NODE_ENV=test && mocha --require ts-node/register test/NameModule.test.ts",
         "test:Proto": "export NODE_ENV=test && mocha --require ts-node/register test/Proto.test.ts",
         "test:ProvenanceClient": "export NODE_ENV=test && mocha --require ts-node/register test/ProvenanceClient.test.ts",
         "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts"

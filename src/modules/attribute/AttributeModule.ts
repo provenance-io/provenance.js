@@ -4,6 +4,7 @@ import * as grpc from 'grpc';
 import { IProvider } from '../../providers/IProvider';
 import { Attribute, AttributeType } from '../../types';
 import { IQueryClient, QueryClient } from '../../proto/provenance/attribute/v1/query_grpc_pb';
+
 import * as provenance_attribute_v1_query_pb from '../../proto/provenance/attribute/v1/query_pb';
 import * as provenance_attribute_v1_tx_pb from '../../proto/provenance/attribute/v1/tx_pb';
 

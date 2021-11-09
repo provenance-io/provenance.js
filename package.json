@@ -1,0 +1,53 @@
+{
+    "name": "@provenance/provenance.js",
+    "description": "Provenance library and wallet implementation in Typescript/Javascript",
+    "version": "1.7.5",
+    "private": false,
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "module": "lib.esm/index.js",
+    "files": [
+        "lib",
+        "lib.esm"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/provenance-io/provenance.js.git"
+    },
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "npm run protoc && tsc",
+        "clean": "npx rimraf lib && npx rimraf src/proto",
+        "postinstall": "npm run build",
+        "prepare": "npm run rebuild",
+        "protoc": "./scripts/protoc.sh",
+        "rebuild": "npm run clean && npm run build",
+        "test": "export NODE_ENV=test && mocha --require ts-node/register test/**/*.test.ts",
+        "test:Proto": "export NODE_ENV=test && mocha --require ts-node/register test/Proto.test.ts",
+        "test:ProvenanceClient": "export NODE_ENV=test && mocha --require ts-node/register test/ProvenanceClient.test.ts",
+        "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.22",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^16.11.6",
+        "@types/ripemd160": "^2.0.0",
+        "chai": "^4.3.4",
+        "grpc-tools": "^1.11.2",
+        "grpc_tools_node_protoc_ts": "^5.3.2",
+        "mocha": "^9.1.2",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.2.1",
+        "typescript": "^4.4.4"
+    },
+    "dependencies": {
+        "bech32": "^2.0.0",
+        "bip32": "^2.0.6",
+        "bip39": "^3.0.4",
+        "bs58": "^4.0.1",
+        "elliptic": "^6.5.4",
+        "grpc": "^1.24.11",
+        "protobufjs": "^6.11.2",
+        "ripemd160": "^2.0.2"
+    }
+}

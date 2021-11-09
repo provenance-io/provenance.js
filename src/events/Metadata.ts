@@ -1,0 +1,24 @@
+import * as provenance_metadata_v1_events_pb from '../proto/provenance/metadata/v1/events_pb';
+
+export type EventTxCompleted = provenance_metadata_v1_events_pb.EventTxCompleted.AsObject;
+export type EventScopeCreated = provenance_metadata_v1_events_pb.EventScopeCreated.AsObject;
+export type EventScopeUpdated = provenance_metadata_v1_events_pb.EventScopeUpdated.AsObject;
+export type EventScopeDeleted = provenance_metadata_v1_events_pb.EventScopeDeleted.AsObject;
+export type EventSessionCreated = provenance_metadata_v1_events_pb.EventSessionCreated.AsObject;
+export type EventSessionUpdated = provenance_metadata_v1_events_pb.EventSessionUpdated.AsObject;
+export type EventSessionDeleted = provenance_metadata_v1_events_pb.EventSessionDeleted.AsObject;
+export type EventRecordCreated = provenance_metadata_v1_events_pb.EventRecordCreated.AsObject;
+export type EventRecordUpdated = provenance_metadata_v1_events_pb.EventRecordUpdated.AsObject;
+export type EventRecordDeleted = provenance_metadata_v1_events_pb.EventRecordDeleted.AsObject;
+export type EventScopeSpecificationCreated = provenance_metadata_v1_events_pb.EventScopeSpecificationCreated.AsObject;
+export type EventScopeSpecificationUpdated = provenance_metadata_v1_events_pb.EventScopeSpecificationUpdated.AsObject;
+export type EventScopeSpecificationDeleted = provenance_metadata_v1_events_pb.EventScopeSpecificationDeleted.AsObject;
+export type EventContractSpecificationCreated = provenance_metadata_v1_events_pb.EventContractSpecificationCreated.AsObject;
+export type EventContractSpecificationUpdated = provenance_metadata_v1_events_pb.EventContractSpecificationUpdated.AsObject;
+export type EventContractSpecificationDeleted = provenance_metadata_v1_events_pb.EventContractSpecificationDeleted.AsObject;
+export type EventRecordSpecificationCreated = provenance_metadata_v1_events_pb.EventRecordSpecificationCreated.AsObject;
+export type EventRecordSpecificationUpdated = provenance_metadata_v1_events_pb.EventRecordSpecificationUpdated.AsObject;
+export type EventRecordSpecificationDeleted = provenance_metadata_v1_events_pb.EventRecordSpecificationDeleted.AsObject;
+export type EventOSLocatorCreated = provenance_metadata_v1_events_pb.EventOSLocatorCreated.AsObject;
+export type EventOSLocatorUpdated = provenance_metadata_v1_events_pb.EventOSLocatorUpdated.AsObject;
+export type EventOSLocatorDeleted = provenance_metadata_v1_events_pb.EventOSLocatorDeleted.AsObject;

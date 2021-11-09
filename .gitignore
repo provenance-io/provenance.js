@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# Build output
+lib
+lib.esm
+
+# Protobuf compiled code
+src/proto
+
+# macOS
+.DS_Store
+
+# IDEs
+*.iml
+.idea

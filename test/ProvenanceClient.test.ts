@@ -2,6 +2,7 @@ import { assert, expect, use } from 'chai';
 import { MockProvider } from './mock/MockProvider';
 
 import { ProvenanceClient } from '../src/client/ProvenanceClient';
+import { AttributeType } from '../src/types';
 
 describe('ProvenanceClient', function () {
 
@@ -24,6 +25,7 @@ describe('ProvenanceClient', function () {
         }
         */
 
+        /*
         try {
             const marker = await client.marker.getMarker('nhash');
             console.dir(marker);
@@ -37,6 +39,20 @@ describe('ProvenanceClient', function () {
         } catch (ex) {
             assert(false, `Unexpected error: ${ex.message}`);
         }
+        */
+
+        const txBody = client.construct((msgs) => {
+            const msg = client.attribute.addAttribute('tp1aat3l2m362vyj74rhajr8yng8r05rvl3c0uxzn', AttributeType.ATTRIBUTE_TYPE_STRING, 'test.name', 'test.value');
+            console.dir(msg);
+            console.dir(msg.toObject());
+            msgs.push(msg);
+        });
+
+        console.dir(txBody);
+        txBody.getMessagesList().forEach((msg) => {
+            console.dir(msg.toObject());
+        });
+        console.dir(txBody.toObject());
     });
 
 });

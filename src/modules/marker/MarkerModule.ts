@@ -16,8 +16,9 @@ export class MarkerModule {
     // Get all marker registrations on the Provenance Blockchain
     getAllMarkers(status: marker_pb.MarkerStatus = marker_pb.MarkerStatus.MARKER_STATUS_UNSPECIFIED): Promise<MarkerAccount[]> {
         return new Promise<MarkerAccount[]> ((resolve, reject) => {
-            const req = new marker_query_pb.QueryAllMarkersRequest();
-            req.setStatus(marker_pb.MarkerStatus.MARKER_STATUS_UNSPECIFIED);
+            const req = (new marker_query_pb.QueryAllMarkersRequest())
+                .setStatus(marker_pb.MarkerStatus.MARKER_STATUS_UNSPECIFIED);
+                
             this.queryClient.allMarkers(req, (err, res) => {
                 if (err != null) {
                     reject(err);
@@ -36,8 +37,9 @@ export class MarkerModule {
     // Get marker details
     getMarker(denom: string): Promise<MarkerAccount> {
         return new Promise<MarkerAccount> ((resolve, reject) => {
-            const req = new marker_query_pb.QueryMarkerRequest();
-            req.setId(denom);
+            const req = (new marker_query_pb.QueryMarkerRequest())
+                .setId(denom);
+
             this.queryClient.marker(req, (err, res) => {
                 if (err != null) {
                     reject(err);
@@ -52,8 +54,9 @@ export class MarkerModule {
     // Get all accounts holding the given marker on the Provenance Blockchain
     getAllAccountsHoldingMarker(denom: string): Promise<Balance[]> {
         return new Promise<Balance[]> ((resolve, reject) => {
-            const req = new marker_query_pb.QueryHoldingRequest();
-            req.setId(denom);
+            const req = (new marker_query_pb.QueryHoldingRequest())
+                .setId(denom);
+
             this.queryClient.holding(req, (err, res) => {
                 if (err != null) {
                     reject(err);
@@ -71,8 +74,9 @@ export class MarkerModule {
     // Get total supply for marker
     getTotalSupply(denom: string): Promise<Coin> {
         return new Promise<Coin> ((resolve, reject) => {
-            const req = new marker_query_pb.QuerySupplyRequest();
-            req.setId(denom);
+            const req = (new marker_query_pb.QuerySupplyRequest())
+                .setId(denom);
+
             this.queryClient.supply(req, (err, res) => {
                 if (err != null) {
                     reject(err);
@@ -86,8 +90,9 @@ export class MarkerModule {
     // Get coins in escrow by marker
     getCoinsInEscrow(denom: string): Promise<Coin[]> {
         return new Promise<Coin[]> ((resolve, reject) => {
-            const req = new marker_query_pb.QueryEscrowRequest();
-            req.setId(denom);
+            const req = (new marker_query_pb.QueryEscrowRequest())
+                .setId(denom);
+
             this.queryClient.escrow(req, (err, res) => {
                 if (err != null) {
                     reject(err);
@@ -105,8 +110,9 @@ export class MarkerModule {
     // Get access grants defined for marker
     getAccessGrantsForMarker(denom: string): Promise<AccessGrant[]> {
         return new Promise<AccessGrant[]> ((resolve, reject) => {
-            const req = new marker_query_pb.QueryAccessRequest();
-            req.setId(denom);
+            const req = (new marker_query_pb.QueryAccessRequest())
+                .setId(denom);
+                
             this.queryClient.access(req, (err, res) => {
                 if (err != null) {
                     reject(err);
@@ -124,8 +130,8 @@ export class MarkerModule {
     // Get metadata for marker
     getMetadata(denom: string): Promise<Metadata> {
         return new Promise<Metadata> ((resolve, reject) => {
-            const req = new marker_query_pb.QueryDenomMetadataRequest();
-            req.setDenom(denom);
+            const req = (new marker_query_pb.QueryDenomMetadataRequest())
+                .setDenom(denom);
 
             this.queryClient.denomMetadata(req, (err, res) => {
                 if (err != null) {

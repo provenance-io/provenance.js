@@ -20,6 +20,7 @@ The provenance.js library aims to be a complete and compact Javascript/TypeScrip
 
 * WASM contract deployment support.
 * Import contract ABI from [JSON Schema](http://json-schema.org) to query and transact with contracts.
+* Suite of tools for event stream monitoring and filtering.
 
 ## License
 

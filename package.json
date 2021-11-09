@@ -23,6 +23,7 @@
         "protoc": "./scripts/protoc.sh && cp -R ./src/proto ./lib",
         "rebuild": "npm run clean && npm run build",
         "test": "export NODE_ENV=test && mocha --require ts-node/register test/**/*.test.ts",
+        "test:AttributeModule": "export NODE_ENV=test && mocha --require ts-node/register test/AttributeModule.test.ts",
         "test:Proto": "export NODE_ENV=test && mocha --require ts-node/register test/Proto.test.ts",
         "test:ProvenanceClient": "export NODE_ENV=test && mocha --require ts-node/register test/ProvenanceClient.test.ts",
         "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts"

@@ -86,9 +86,6 @@ describe('AttributeModule', function () {
 
     describe('#getAccountAttributesByName', function () {
 
-        // TODO: For some reason, when an attribute has been updated, getAccountAttributesByName will return all versions (not just the latest).
-        //       The provenanced client, however, correctly shows only the latest.
-
         it(`Locates a JSON attribute on an account by name`, async () => {
             const attrs = await client.attribute.getAccountAttributesByName(account1.address, AttributeModuleTestConfig.JSON_ATTRIBUTE.NAME);
             expect(attrs.length).to.equal(1);
@@ -147,6 +144,22 @@ describe('AttributeModule', function () {
     });
 
     describe('#updateAttribute', function () {
+
+        it(`Cannot update an attribute that has not been added to an account`, async () => {
+            await client.attribute.updateAttribute(
+                account2.address, // this account doesn't have the attribute
+                AttributeModuleTestConfig.JSON_ATTRIBUTE.NAME,
+                AttributeType.ATTRIBUTE_TYPE_JSON,
+                AttributeType.ATTRIBUTE_TYPE_JSON,
+                AttributeModuleTestConfig.JSON_ATTRIBUTE.VALUE,
+                AttributeModuleTestConfig.JSON_ATTRIBUTE.UPDATED_VALUE,
+                owner.address
+            ).broadcastTx(owner).then((txRes) => {
+                assert.fail(`Unexpected success: Should not be able to update an attribute that doesn't exist`);
+            }).catch((err) => {
+                expect(err.message).to.contain('no attributes updated with name');
+            });
+        });
 
         it(`Updates a JSON attribute on an account`, async () => {
             const txRes = await client.attribute.updateAttribute(
@@ -243,8 +256,6 @@ describe('AttributeModule', function () {
             expect(attr.attributeType).to.equal(AttributeType.ATTRIBUTE_TYPE_STRING);
             expect(attr.stringValue).to.equal(AttributeModuleTestConfig.STRING_ATTRIBUTE.UPDATED_VALUE);
         });
-
-        // TODO: test failures
 
     });
 

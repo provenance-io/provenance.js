@@ -4,6 +4,7 @@ import {
     BroadcastMode, 
     TxResponse, 
 } from '../types';
+import { GasEstimate } from './GasEstimate';
 import { 
     ITxClient, 
     SignerArgument, 
@@ -23,6 +24,10 @@ export class Message {
             signers, 
             mode
         );
+    }
+
+    public estimateTx(signers: SignerArgument): Promise<GasEstimate> {
+        return this.txClient.constructAndEstimateTx(this, signers);
     }
 
     public msgs: Array<jspb.Message>;

@@ -149,7 +149,7 @@ export class ProvenanceClient implements ITxClient {
     /**
      * ???
      * @param constructArg ???
-     * @param signers The signing keys for the transaction.
+     * @param signers The signing key(s) for the transaction.
      * @returns ???
      */
      construct(constructArg: ConstructArgument, signers: SignerArgument): Promise<BaseRequest> {
@@ -171,10 +171,21 @@ export class ProvenanceClient implements ITxClient {
     }
 
     /**
+     * 
+     * @param constructArg ???
+     * @param signers The signing key(s) for the transaction.
+     * @returns ???
+     */
+    async constructAndEstimateTx(constructArg: ConstructArgument, signers: SignerArgument): Promise<GasEstimate> {
+        const baseReq = await this.construct(constructArg, signers);
+        return this.estimateTx(baseReq);
+    }
+
+    /**
      * ???
      * @param constructArg ???
      * @param gasEstimate ???
-     * @param signers The signing keys for the transaction.
+     * @param signers The signing key(s) for the transaction.
      * @param mode ???
      * @returns ???
      */
@@ -192,7 +203,7 @@ export class ProvenanceClient implements ITxClient {
      * ???
      * @param constructArg ???
      * @param estimateCallback ???
-     * @param signers The signing keys for the transaction.
+     * @param signers The signing key(s) for the transaction.
      * @param mode ???
      * @returns ???
      */

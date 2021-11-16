@@ -28,6 +28,13 @@ export interface ITxClient {
      * @param signers 
      */
     construct(constructArg: ConstructArgument, signers: SignerArgument): Promise<BaseRequest>;
+
+    /**
+     * 
+     * @param constructArg 
+     * @param signers 
+     */
+    constructAndEstimateTx(constructArg: ConstructArgument, signers: SignerArgument): Promise<GasEstimate>;
     
     /**
      * 

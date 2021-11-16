@@ -29,16 +29,6 @@ export class Key implements ISigner {
         return this.key.publicKey;
     }
 
-    get privateKey(): string {
-        // TODO: not right
-        return this.key.privateKey.toString('base64');
-    }
-
-    get privateKeyData(): Buffer {
-        // TODO: not right
-        return this.key.privateKey;
-    }
-
     set baseAccount(account: BaseAccount) {
         this.account = account;
     }

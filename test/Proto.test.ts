@@ -11,9 +11,33 @@ describe('Proto', function () {
 
     describe('#cosmos', function () {
 
+        describe('/auth', function () {
+
+            const COSMOS_AUTH_PROTO_PATH = 'proto/cosmos/auth';
+
+            const AUTH_PROTO_HASH = '9927e4264fbcd4dbb2aeb3febc8dcb272602aab798b726d83090a952ea70a781';
+            const GENESIS_PROTO_HASH = '1d8f80e7f5385ab9295f7366f74759d4d669cf1d9a8b7791a235f0a5d16b462b';
+            const QUERY_PROTO_HASH = '666543702fd5c0e75c82a5872e75779537068992aa2168a664e4c1eebdab1cc9';
+
+            it(`cosmos.auth.v1beta1/auth.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_AUTH_PROTO_PATH}/v1beta1/auth.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(AUTH_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmos.auth.v1beta1/genesis.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_AUTH_PROTO_PATH}/v1beta1/genesis.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(GENESIS_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmos.auth.v1beta1/query.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_AUTH_PROTO_PATH}/v1beta1/query.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(QUERY_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+        });
+
         const COSMOS_PROTO_PATH = 'proto/cosmos';
 
-        const AUTH_PROTO_HASH = '9927e4264fbcd4dbb2aeb3febc8dcb272602aab798b726d83090a952ea70a781';
         const BANK_PROTO_HASH = 'cd7a0f483a69019d7d6cc5c4e27c553601e2ad1273d0e57923280651d3febd3e';
         const ABCI_PROTO_HASH = 'f89334a9eb0de790a86580bbb50fe659a5ae4de2cac84dfa94dd5d8a66ea5339';
         const PAGINATION_PROTO_HASH = '0ff0bbea9686372ae3dcebbef463222ba87ea1d35d4f3b8c9b0d37bf549a7b79';
@@ -23,11 +47,6 @@ describe('Proto', function () {
         const SIGNING_PROTO_HASH = '5de45048170ddf22effc4bf06f637ea131a1138af84882b6b5ded49e64cd7e20';
         const SERVICE_PROTO_HASH = '93fa31d8a648b354ae9f6027603890d5059df1a8a28a8d043e5ee8bc74bfcbdf';
         const TX_PROTO_HASH = 'f1e0f669c5d67809225ad9979ddf7a77827cef44d6b14abc241c9d2aa7cde07f';
-
-        it(`cosmos.auth.v1beta1/auth.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/auth/v1beta1/auth.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(AUTH_PROTO_HASH, ERROR_MESSAGE);
-        });
 
         it(`cosmos.bank.v1beta1/bank.proto`, async () => {
             const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/bank/v1beta1/bank.proto`)).digest('hex');

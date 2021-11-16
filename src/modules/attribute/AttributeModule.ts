@@ -1,10 +1,14 @@
 import * as jspb from 'google-protobuf';
 import * as grpc from 'grpc';
 
+import { 
+    Message, 
+    ITxClient, 
+} from '../../client';
 import { IProvider } from '../../providers/IProvider';
 import { Attribute, AttributeType } from '../../types';
-import { IQueryClient, QueryClient } from '../../proto/provenance/attribute/v1/query_grpc_pb';
 
+import { IQueryClient, QueryClient } from '../../proto/provenance/attribute/v1/query_grpc_pb';
 import * as provenance_attribute_v1_query_pb from '../../proto/provenance/attribute/v1/query_pb';
 import * as provenance_attribute_v1_tx_pb from '../../proto/provenance/attribute/v1/tx_pb';
 
@@ -12,8 +16,9 @@ type AttributeValue = string | Buffer;
 
 export class AttributeModule {
 
-    constructor(provider: IProvider) {
+    constructor(provider: IProvider, txClient: ITxClient) {
         this.provider = provider;
+        this.txClient = txClient;
         this.queryClient = new QueryClient(this.provider.network.uri.toString(), grpc.credentials.createInsecure());
     }
 
@@ -93,18 +98,14 @@ export class AttributeModule {
         type: AttributeType, 
         name: string, 
         value: AttributeValue, 
-        owner?: string
+        owner: string
     ): jspb.Message {
         const req = (new provenance_attribute_v1_tx_pb.MsgAddAttributeRequest())
             .setAccount(addr)
             .setAttributeType(type)
             .setName(name)
-            .setValue(value);
-
-        if (typeof owner !== 'undefined') {
-            // TODO: is optional?
-            req.setOwner(owner);
-        }
+            .setValue(value)
+            .setOwner(owner);
 
         return req;
     }
@@ -113,16 +114,12 @@ export class AttributeModule {
     deleteAttribute(
         addr: string, 
         name: string, 
-        owner?: string
+        owner: string
     ): jspb.Message {
         const req = (new provenance_attribute_v1_tx_pb.MsgDeleteAttributeRequest())
             .setAccount(addr)
-            .setName(name);
-
-        if (typeof owner !== 'undefined') {
-            // TODO: is optional?
-            req.setOwner(owner);
-        }
+            .setName(name)
+            .setOwner(owner);
 
         return req;
     }
@@ -132,17 +129,13 @@ export class AttributeModule {
         addr: string, 
         name: string, 
         value: AttributeValue, 
-        owner?: string
+        owner: string
     ): jspb.Message {
         const req = (new provenance_attribute_v1_tx_pb.MsgDeleteDistinctAttributeRequest())
             .setAccount(addr)
             .setName(name)
-            .setValue(value);
-        
-        if (typeof owner !== 'undefined') {
-            // TODO: is optional?
-            req.setOwner(owner);
-        }
+            .setValue(value)
+            .setOwner(owner);
 
         return req;
     }
@@ -155,7 +148,7 @@ export class AttributeModule {
         newType: AttributeType, 
         oldValue: AttributeValue, 
         newValue: AttributeValue, 
-        owner?: string
+        owner: string
     ): jspb.Message {
         const req = (new provenance_attribute_v1_tx_pb.MsgUpdateAttributeRequest())
             .setAccount(addr)
@@ -163,17 +156,14 @@ export class AttributeModule {
             .setOriginalAttributeType(oldType)
             .setUpdateAttributeType(newType)
             .setOriginalValue(oldValue)
-            .setUpdateValue(newValue);
-
-        if (typeof owner !== 'undefined') {
-            // TODO: is optional?
-            req.setOwner(owner);
-        }
+            .setUpdateValue(newValue)
+            .setOwner(owner);
 
         return req;
     }
 
-    private readonly provider: IProvider;
-    private queryClient: IQueryClient;
+    protected readonly provider: IProvider;
+    protected readonly txClient: ITxClient;
+    protected readonly queryClient: IQueryClient;
 
 };

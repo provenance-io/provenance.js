@@ -25,12 +25,14 @@
         "test": "export NODE_ENV=test && mocha --require ts-node/register test/**/*.test.ts",
         "test:AttributeModule": "export NODE_ENV=test && mocha --require ts-node/register test/AttributeModule.test.ts",
         "test:MarkerModule": "export NODE_ENV=test && mocha --require ts-node/register test/MarkerModule.test.ts",
+        "test:MessageUtils": "export NODE_ENV=test && mocha --require ts-node/register test/MessageUtils.test.ts",
         "test:NameModule": "export NODE_ENV=test && mocha --require ts-node/register test/NameModule.test.ts",
         "test:Proto": "export NODE_ENV=test && mocha --require ts-node/register test/Proto.test.ts",
         "test:ProvenanceClient": "export NODE_ENV=test && mocha --require ts-node/register test/ProvenanceClient.test.ts",
         "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts"
     },
     "devDependencies": {
+        "@types/async": "^3.2.9",
         "@types/chai": "^4.2.22",
         "@types/mocha": "^9.0.0",
         "@types/node": "^16.11.6",
@@ -44,6 +46,7 @@
         "typescript": "^4.4.4"
     },
     "dependencies": {
+        "async": "^3.2.2",
         "bech32": "^2.0.0",
         "bip32": "^2.0.6",
         "bip39": "^3.0.4",

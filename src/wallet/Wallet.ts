@@ -36,7 +36,8 @@ export class Wallet {
         return new Wallet(
             (mainnet ? MAINNET_BECH32_HRP : TESTNET_BECH32_HRP), 
             (mainnet ? MAINNET_BIP32_HDPATH : TESTNET_BIP32_HDPATH), 
-            bip32.fromBase58(bip32enc)
+            bip32.fromBase58(bip32enc),
+            mainnet
         );
     }
 
@@ -44,7 +45,8 @@ export class Wallet {
         return new Wallet(
             (mainnet ? MAINNET_BECH32_HRP : TESTNET_BECH32_HRP), 
             (mainnet ? MAINNET_BIP32_HDPATH : TESTNET_BIP32_HDPATH), 
-            bip32.fromSeed(seed)
+            bip32.fromSeed(seed),
+            mainnet
         );
     }
 
@@ -52,7 +54,8 @@ export class Wallet {
         return new Wallet(
             (mainnet ? MAINNET_BECH32_HRP : TESTNET_BECH32_HRP), 
             (mainnet ? MAINNET_BIP32_HDPATH : TESTNET_BIP32_HDPATH), 
-            bip32.fromPrivateKey(privateKey, chainCode)
+            bip32.fromPrivateKey(privateKey, chainCode),
+            mainnet
         );
     }
 
@@ -67,10 +70,11 @@ export class Wallet {
         return Wallet.fromPrivateKey(privateKey, chainCode, mainnet);
     }
 
-    constructor(hrp: string, hdpath: string, key: bip32.BIP32Interface) {
+    constructor(hrp: string, hdpath: string, key: bip32.BIP32Interface, mainnet: boolean) {
         this.hrp = hrp;
         this.hdpath = hdpath;
         this.key = key;
+        this.mainnet = mainnet;
     }
 
     public getKey(keyring: number, key: number): Key {
@@ -85,11 +89,12 @@ export class Wallet {
         hdpath_parts[HDPathIndex.CHANGE] = keyring.toString();
         hdpath_parts[HDPathIndex.ADDRESS_INDEX] = key.toString() + "'";
         let chpath = hdpath_parts.join('/');
-        return new Key(this.hrp, this.key.derivePath(chpath));
+        return new Key(this.hrp, this.key.derivePath(chpath), this.mainnet);
     }
 
     private readonly hrp: string;
     private readonly hdpath: string;
     private readonly key: bip32.BIP32Interface;
+    private readonly mainnet: boolean;
 
 }

@@ -1,10 +1,14 @@
 import * as jspb from 'google-protobuf';
 import * as grpc from 'grpc';
 
+import { 
+    Message, 
+    ITxClient, 
+} from '../../client';
 import { IProvider } from '../../providers/IProvider';
 import { AccessGrant, Balance, Coin, MarkerAccount, MarkerStatus, MarkerType, Metadata } from '../../types';
-import { IQueryClient, QueryClient } from '../../proto/provenance/marker/v1/query_grpc_pb';
 
+import { IQueryClient, QueryClient } from '../../proto/provenance/marker/v1/query_grpc_pb';
 import * as cosmos_bank_v1beta1_bank_pb from "../../proto/cosmos/bank/v1beta1/bank_pb";
 import * as cosmos_base_v1beta1_coin_pb from '../../proto/cosmos/base/v1beta1/coin_pb';
 import * as provenance_marker_v1_accessgrant_pb from '../../proto/provenance/marker/v1/accessgrant_pb';
@@ -14,8 +18,9 @@ import * as provenance_marker_v1_tx_pb from "../../proto/provenance/marker/v1/tx
 
 export class MarkerModule {
 
-    constructor(provider: IProvider) {
+    constructor(provider: IProvider, txClient: ITxClient) {
         this.provider = provider;
+        this.txClient = txClient;
         this.queryClient = new QueryClient(this.provider.network.uri.toString(), grpc.credentials.createInsecure());
     }
 
@@ -386,7 +391,8 @@ export class MarkerModule {
         return req;
     }
 
-    private readonly provider: IProvider;
-    private queryClient: IQueryClient;
+    protected readonly provider: IProvider;
+    protected readonly txClient: ITxClient;
+    protected readonly queryClient: IQueryClient;
 
 };

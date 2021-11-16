@@ -72,4 +72,17 @@ export class NameModuleExtensions extends NameModule {
         });
     }
 
+    deleteNamePath(namePath: string, numElems: number, addr: string): Message {
+        if (namePath.split('.').length < numElems) {
+            throw new Error(`Invalid number of elements ${numElems} in name path ${namePath}`);
+        }
+
+        var msgs: Array<jspb.Message> = new Array<jspb.Message>();
+        for (var idx = 0; idx < numElems; idx++) {
+            msgs = msgs.concat(this.deleteName(namePath.split('.').slice(idx).join('.'), addr).msgs);
+        }
+
+        return new Message(msgs, this.txClient);
+    }
+
 }

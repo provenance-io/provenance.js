@@ -1,4 +1,4 @@
-const DEFAULT_FEE_ADJUSTMENT = 1.25;
+const DEFAULT_FEE_ADJUSTMENT = 1.38675309;
 const DEFAULT_GAS_PRICE = 1905.00;
 
 export class GasEstimate {

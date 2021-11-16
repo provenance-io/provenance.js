@@ -1,4 +1,4 @@
-import { assert, expect, use } from 'chai';
+import { assert, expect } from 'chai';
 import { MockProvider } from './mock/MockProvider';
 
 import { 
@@ -153,6 +153,21 @@ describe('NameModule', function () {
 
     });
 
+    describe('#deleteNamePath', function () {
+
+        it(`Deletes name path`, async () => {
+            const txRes = await (await client.name.deleteNamePath(
+                NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD, 
+                3, 
+                owner.address
+            )).broadcastTx(owner);
+
+            expect(txRes.code).to.equal(0);
+            expect(txRes.gasUsed).lessThanOrEqual(txRes.gasWanted);
+        });
+
+    });
+
     describe('#lookupNamesForAddress', function () {
 
         it(`Returns empty list for address with no bound names`, async () => {
@@ -162,13 +177,10 @@ describe('NameModule', function () {
 
         it(`Locates names bound to an address`, async () => {
             const names = await client.name.lookupNamesForAddress(owner.address);
-            expect(names.length).to.equal(6);
+            expect(names.length).to.equal(3);
             expect(names).contains(`${NameModuleTestConfig.BINDNAME_TEST_NAME_2}.${NameModuleTestConfig.ROOT_NAME}`);
             expect(names).contains(`${NameModuleTestConfig.BINDNAME_TEST_NAME_3}.${NameModuleTestConfig.ROOT_NAME}`);
             expect(names).contains(`${NameModuleTestConfig.BINDNAME_TEST_NAME_4}.${NameModuleTestConfig.ROOT_NAME}`);
-            expect(names).contains(`${NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD}`);
-            expect(names).contains(`${NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD.split('.').slice(1).join('.')}`);
-            expect(names).contains(`${NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD.split('.').slice(2).join('.')}`);
         });
 
     });
@@ -197,10 +209,10 @@ describe('NameModule', function () {
             client.name.deleteName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_2}.${NameModuleTestConfig.ROOT_NAME}`, owner.address),
             client.name.deleteName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_3}.${NameModuleTestConfig.ROOT_NAME}`, owner.address),
             client.name.deleteName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_4}.${NameModuleTestConfig.ROOT_NAME}`, owner.address),
-            client.name.deleteName(`${NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD}`, owner.address),
-            client.name.deleteName(`${NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD.split('.').slice(1).join('.')}`, owner.address),
-            client.name.deleteName(`${NameModuleTestConfig.BINDPATH_TEST_PATH_GOOD.split('.').slice(2).join('.')}`, owner.address),
         ], () => { return true; }, [owner], BroadcastMode.BROADCAST_MODE_BLOCK);
+
+        expect(txRes.code).to.equal(0);
+        expect(txRes.gasUsed).lessThanOrEqual(txRes.gasWanted);
 
     });
 

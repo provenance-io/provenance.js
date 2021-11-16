@@ -40,7 +40,7 @@ export interface ITxClient {
         constructArg: ConstructArgument, 
         gasEstimate: GasEstimate, 
         signers: SignerArgument, 
-        mode: BroadcastMode, 
+        mode: BroadcastMode
     ): Promise<TxResponse>;
 
     /**
@@ -54,7 +54,7 @@ export interface ITxClient {
         constructArg: ConstructArgument, 
         estimateCallback: EstimateFunction, 
         signers: SignerArgument, 
-        mode: BroadcastMode, 
+        mode: BroadcastMode
     ): Promise<TxResponse>;
 
     /**

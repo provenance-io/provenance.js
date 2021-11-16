@@ -205,7 +205,9 @@ export class ProvenanceClient implements ITxClient {
         return new Promise<TxResponse> (async (resolve, reject) => {
             const baseReq = await this.construct(constructArg, signers);
             this.estimateTx(baseReq).then((gasEstimate) => {
+                // give the caller an opportunity to opt-out
                 if (estimateCallback(gasEstimate)) {
+                    // broadcast the transaction
                     this.broadcastTx(baseReq, gasEstimate, mode).then((res) => {
                         resolve(res);
                     }).catch((err) => {

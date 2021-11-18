@@ -1,5 +1,5 @@
 {
-    "name": "@provenance/provenance.js",
+    "name": "@provenanceio/provenance.js",
     "description": "Provenance library and wallet implementation in Typescript/Javascript",
     "homepage": "https://provenance.io/",
     "version": "1.7.5",

@@ -1,6 +1,7 @@
 {
     "name": "@provenance/provenance.js",
     "description": "Provenance library and wallet implementation in Typescript/Javascript",
+    "homepage": "https://provenance.io/",
     "version": "1.7.5",
     "private": false,
     "main": "lib/index.js",
@@ -16,7 +17,7 @@
     },
     "license": "Apache-2.0",
     "scripts": {
-        "build": "npm run protoc && tsc",
+        "build": "npm run protoc && npx tsc",
         "clean": "npx rimraf lib && npx rimraf src/proto",
         "postinstall": "npm run build",
         "prepare": "npm run rebuild",
@@ -32,6 +33,7 @@
         "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts"
     },
     "devDependencies": {
+        "@provenanceio/cavendish": "^1.7.5",
         "@types/async": "^3.2.9",
         "@types/chai": "^4.2.22",
         "@types/mocha": "^9.0.0",

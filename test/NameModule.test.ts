@@ -1,8 +1,9 @@
 import { assert, expect } from 'chai';
+import { Cavendish } from '@provenanceio/cavendish';
+
 import { MockProvider } from './mock/MockProvider';
 
 import { 
-    BroadcastMode,
     ProvenanceClient,
     Wallet ,
 } from '../src';
@@ -25,12 +26,24 @@ describe('NameModule', function () {
 
     this.timeout(15000);
 
+    const cavendish = new Cavendish();
+
     const provider = new MockProvider();
     const client = new ProvenanceClient(provider);
 
     const wallet = Wallet.fromMnemonic(NameModuleTestConfig.BIP39_MNEMONIC, false);
     const owner = wallet.getKey(0, 0);
     const nonOwner = wallet.getKey(0, 1);
+
+    before(async () => {
+
+        // start the localnet blockchain
+        await cavendish.start({
+            mnemonic: NameModuleTestConfig.BIP39_MNEMONIC,
+            accounts: 2
+        });
+
+    });
 
     describe('#bindName', function () {
 
@@ -205,14 +218,8 @@ describe('NameModule', function () {
     // clean-up after the tests run
     after(async () => {
 
-        const txRes = await client.constructEstimateAndBroadcastTx([
-            client.name.deleteName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_2}.${NameModuleTestConfig.ROOT_NAME}`, owner.address),
-            client.name.deleteName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_3}.${NameModuleTestConfig.ROOT_NAME}`, owner.address),
-            client.name.deleteName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_4}.${NameModuleTestConfig.ROOT_NAME}`, owner.address),
-        ], () => { return true; }, [owner], BroadcastMode.BROADCAST_MODE_BLOCK);
-
-        expect(txRes.code).to.equal(0);
-        expect(txRes.gasUsed).lessThanOrEqual(txRes.gasWanted);
+        // stop and reset the localnet blockchain
+        await cavendish.stopAndReset();
 
     });
 

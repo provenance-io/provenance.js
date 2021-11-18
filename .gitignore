@@ -8,8 +8,8 @@ lib.esm
 # Protobuf compiled code
 src/proto
 
-# Terroir
-.provenance
+# Cavendish
+.cavendish
 
 # macOS
 .DS_Store

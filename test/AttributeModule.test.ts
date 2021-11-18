@@ -1,4 +1,5 @@
 import { assert, expect } from 'chai';
+import { Cavendish } from '@provenanceio/cavendish';
 import { MockProvider } from './mock/MockProvider';
 
 import * as _ from 'lodash';
@@ -32,6 +33,8 @@ describe('AttributeModule', function () {
 
     this.timeout(15000);
 
+    const cavendish = new Cavendish();
+
     const provider = new MockProvider();
     const client = new ProvenanceClient(provider);
 
@@ -42,6 +45,12 @@ describe('AttributeModule', function () {
     const account2 = wallet.getKey(0, 2);
 
     before(async () => {
+
+        // start the localnet blockchain
+        await cavendish.start({
+            mnemonic: AttributeModuleTestConfig.BIP39_MNEMONIC,
+            accounts: 3
+        });
 
         const txRes = await client.constructEstimateAndBroadcastTx([
             await client.name.bindNamePath(AttributeModuleTestConfig.ATTRIBUTE_ROOT_NAME, owner.address),
@@ -368,14 +377,8 @@ describe('AttributeModule', function () {
     // clean-up after the tests run
     after(async () => {
 
-        const txRes = await client.constructEstimateAndBroadcastTx([
-            client.name.deleteName(AttributeModuleTestConfig.STRING_ATTRIBUTE.NAME, owner.address),
-            client.name.deleteName(AttributeModuleTestConfig.JSON_ATTRIBUTE.NAME, owner.address),
-            client.name.deleteNamePath(AttributeModuleTestConfig.ATTRIBUTE_ROOT_NAME, 2, owner.address),
-        ], () => { return true; }, [owner], BroadcastMode.BROADCAST_MODE_BLOCK);
-
-        expect(txRes.code).to.equal(0);
-        expect(txRes.gasUsed).lessThanOrEqual(txRes.gasWanted);
+        // stop and reset the localnet blockchain
+        await cavendish.stopAndReset();
 
     });
 

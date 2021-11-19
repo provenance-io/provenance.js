@@ -32,6 +32,9 @@ ${SCRIPT_DIR}/protogen.sh ${PROTO_DIR}/cosmos/crypto/secp256k1 ${PROTO_DIR} ${PR
 ${SCRIPT_DIR}/protogen.sh ${PROTO_DIR}/cosmos/tx/signing/v1beta1 ${PROTO_DIR} ${PROTO_OUT_DIR}
 ${SCRIPT_DIR}/protogen.sh ${PROTO_DIR}/cosmos/tx/v1beta1 ${PROTO_DIR} ${PROTO_OUT_DIR}
 
+# Third-party protos: Cosmoswasm
+${SCRIPT_DIR}/protogen.sh ${PROTO_DIR}/cosmwasm/wasm/v1 ${PROTO_DIR} ${PROTO_OUT_DIR}
+
 # Provenance protos
 ${SCRIPT_DIR}/protogen.sh ${PROTO_DIR}/provenance/attribute/v1 ${PROTO_DIR} ${PROTO_OUT_DIR}
 ${SCRIPT_DIR}/protogen.sh ${PROTO_DIR}/provenance/marker/v1 ${PROTO_DIR} ${PROTO_OUT_DIR}

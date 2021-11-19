@@ -73,55 +73,120 @@ describe('Proto', function () {
 
         });
 
-        const COSMOS_PROTO_PATH = 'proto/cosmos';
+        describe('/base', function () {
 
-        const ABCI_PROTO_HASH = 'f89334a9eb0de790a86580bbb50fe659a5ae4de2cac84dfa94dd5d8a66ea5339';
-        const PAGINATION_PROTO_HASH = '0ff0bbea9686372ae3dcebbef463222ba87ea1d35d4f3b8c9b0d37bf549a7b79';
-        const COIN_PROTO_HASH = 'e8b08c8614b050c29e460f8d8ea9b88cfec91f254104501042ce3e4d6089cda9';
-        const MULTISIG_PROTO_HASH = '3fba497349c0e4f5eb80f8104087f364f6c55206403b604a711341845b9419b6';
-        const KEYS_PROTO_HASH = 'aecb2e343da5effc6a7f1108587231e37d28203eee24a35c5ba8dd9604818c3e';
-        const SIGNING_PROTO_HASH = '5de45048170ddf22effc4bf06f637ea131a1138af84882b6b5ded49e64cd7e20';
-        const SERVICE_PROTO_HASH = '93fa31d8a648b354ae9f6027603890d5059df1a8a28a8d043e5ee8bc74bfcbdf';
-        const TX_PROTO_HASH = 'f1e0f669c5d67809225ad9979ddf7a77827cef44d6b14abc241c9d2aa7cde07f';
+            const COSMOS_BASE_PROTO_PATH = 'proto/cosmos/base';
 
-        it(`cosmos.base.abci.v1beta1/abci.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/base/abci/v1beta1/abci.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(ABCI_PROTO_HASH, ERROR_MESSAGE);
+            const ABCI_PROTO_HASH = 'f89334a9eb0de790a86580bbb50fe659a5ae4de2cac84dfa94dd5d8a66ea5339';
+            const PAGINATION_PROTO_HASH = '0ff0bbea9686372ae3dcebbef463222ba87ea1d35d4f3b8c9b0d37bf549a7b79';
+            const COIN_PROTO_HASH = 'e8b08c8614b050c29e460f8d8ea9b88cfec91f254104501042ce3e4d6089cda9';
+
+            it(`cosmos.base.abci.v1beta1/abci.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_BASE_PROTO_PATH}/abci/v1beta1/abci.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(ABCI_PROTO_HASH, ERROR_MESSAGE);
+            });
+    
+            it(`cosmos.base.query.v1beta1/pagination.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_BASE_PROTO_PATH}/query/v1beta1/pagination.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(PAGINATION_PROTO_HASH, ERROR_MESSAGE);
+            });
+    
+            it(`cosmos.base.v1beta1/coin.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_BASE_PROTO_PATH}/v1beta1/coin.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(COIN_PROTO_HASH, ERROR_MESSAGE);
+            });
+
         });
 
-        it(`cosmos.base.query.v1beta1/pagination.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/base/query/v1beta1/pagination.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(PAGINATION_PROTO_HASH, ERROR_MESSAGE);
+        describe('/crypto', function () {
+
+            const COSMOS_CRYPTO_PROTO_PATH = 'proto/cosmos/crypto';
+
+            const MULTISIG_PROTO_HASH = '3fba497349c0e4f5eb80f8104087f364f6c55206403b604a711341845b9419b6';
+            const KEYS_PROTO_HASH = 'aecb2e343da5effc6a7f1108587231e37d28203eee24a35c5ba8dd9604818c3e';
+
+            it(`cosmos.crypto.multisig.v1beta1/multisig.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_CRYPTO_PROTO_PATH}/multisig/v1beta1/multisig.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(MULTISIG_PROTO_HASH, ERROR_MESSAGE);
+            });
+    
+            it(`cosmos.crypto.secp256k1/keys.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_CRYPTO_PROTO_PATH}/secp256k1/keys.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(KEYS_PROTO_HASH, ERROR_MESSAGE);
+            });
+
         });
 
-        it(`cosmos.base.v1beta1/coin.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/base/v1beta1/coin.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(COIN_PROTO_HASH, ERROR_MESSAGE);
+        describe('/tx', function () {
+
+            const COSMOS_TX_PROTO_PATH = 'proto/cosmos/tx';
+
+            const SIGNING_PROTO_HASH = '5de45048170ddf22effc4bf06f637ea131a1138af84882b6b5ded49e64cd7e20';
+            const SERVICE_PROTO_HASH = '93fa31d8a648b354ae9f6027603890d5059df1a8a28a8d043e5ee8bc74bfcbdf';
+            const TX_PROTO_HASH = 'f1e0f669c5d67809225ad9979ddf7a77827cef44d6b14abc241c9d2aa7cde07f';
+
+            it(`cosmos.tx.signing.v1beta1/signing.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_TX_PROTO_PATH}/signing/v1beta1/signing.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(SIGNING_PROTO_HASH, ERROR_MESSAGE);
+            });
+    
+            it(`cosmos.tx.v1beta1/service.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_TX_PROTO_PATH}/v1beta1/service.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(SERVICE_PROTO_HASH, ERROR_MESSAGE);
+            });
+    
+            it(`cosmos.tx.v1beta1/tx.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_TX_PROTO_PATH}/v1beta1/tx.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(TX_PROTO_HASH, ERROR_MESSAGE);
+            });
+
         });
 
-        it(`cosmos.crypto.multisig.v1beta1/multisig.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/crypto/multisig/v1beta1/multisig.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(MULTISIG_PROTO_HASH, ERROR_MESSAGE);
-        });
+    });
 
-        it(`cosmos.crypto.secp256k1/keys.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/crypto/secp256k1/keys.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(KEYS_PROTO_HASH, ERROR_MESSAGE);
-        });
+    describe('#cosmwasm', function () {
 
-        it(`cosmos.tx.signing.v1beta1/signing.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/tx/signing/v1beta1/signing.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(SIGNING_PROTO_HASH, ERROR_MESSAGE);
-        });
+        describe('/wasm', function () {
 
-        it(`cosmos.tx.v1beta1/service.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/tx/v1beta1/service.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(SERVICE_PROTO_HASH, ERROR_MESSAGE);
-        });
+            const COSMWASM_WASM_PROTO_PATH = 'proto/cosmwasm/wasm';
 
-        it(`cosmos.tx.v1beta1/tx.proto`, async () => {
-            const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMOS_PROTO_PATH}/tx/v1beta1/tx.proto`)).digest('hex');
-            expect(hash.toLowerCase()).to.equal(TX_PROTO_HASH, ERROR_MESSAGE);
+            const GENESIS_PROTO_HASH = '04f639c4ba3ee299e31704869eff80d1773451b119ba434d467ea0994091a936';
+            const IBC_PROTO_HASH = 'cca70397bd4051876477827c2e1b1e92e1e06bee8b7d026474c088766112ad03';
+            const PROPOSAL_PROTO_HASH = '06222edb2a91389e50258276ab0a86a98642c64bb60cee366e715de580e9a8e2';
+            const QUERY_PROTO_HASH = '7a3ed82f65b79c220d119607842efeb91cbd87721f141d6a27acf02adfbc6a46';
+            const TX_PROTO_HASH = 'bfe8c55cdcd417ad5c97b29a2410b044ffb5185f0ba98c75df9bf1e1f52a95f2';
+            const TYPES_PROTO_HASH = '205b787370a6812cc355573b4a2d7e20ac9e0513ff98945afbdcfccfbd28dbba';
+
+            it(`cosmwasm.wasm.v1/genesis.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMWASM_WASM_PROTO_PATH}/v1/genesis.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(GENESIS_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmwasm.wasm.v1/ibc.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMWASM_WASM_PROTO_PATH}/v1/ibc.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(IBC_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmwasm.wasm.v1/proposal.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMWASM_WASM_PROTO_PATH}/v1/proposal.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(PROPOSAL_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmwasm.wasm.v1/query.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMWASM_WASM_PROTO_PATH}/v1/query.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(QUERY_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmwasm.wasm.v1/tx.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMWASM_WASM_PROTO_PATH}/v1/tx.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(TX_PROTO_HASH, ERROR_MESSAGE);
+            });
+
+            it(`cosmwasm.wasm.v1/types.proto`, async () => {
+                const hash = createHash(HASH_ALGORITHM).update(readFileSync(`${COSMWASM_WASM_PROTO_PATH}/v1/types.proto`)).digest('hex');
+                expect(hash.toLowerCase()).to.equal(TYPES_PROTO_HASH, ERROR_MESSAGE);
+            });
+
         });
 
     });

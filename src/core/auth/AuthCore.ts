@@ -4,8 +4,8 @@ import { ITxClient } from '../../client';
 import { BaseAccount, MarkerAccount } from '../../types';
 import { anyToMessage, getMessageTypeUrl } from '../../utils/MessageUtils';
 import { IProvider } from '../../providers/IProvider';
-import { IQueryClient, QueryClient } from '../../proto/cosmos/auth/v1beta1/query_grpc_pb';
 
+import { IQueryClient, QueryClient } from '../../proto/cosmos/auth/v1beta1/query_grpc_pb';
 import * as cosmos_auth_v1beta1_auth_pb from '../../proto/cosmos/auth/v1beta1/auth_pb';
 import * as cosmos_auth_v1beta1_query_pb from '../../proto/cosmos/auth/v1beta1/query_pb';
 import * as provenance_marker_v1_marker_pb from '../../proto/provenance/marker/v1/marker_pb';

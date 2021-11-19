@@ -1,4 +1,3 @@
-import * as jspb from 'google-protobuf';
 import * as grpc from 'grpc';
 
 import { 
@@ -6,7 +5,7 @@ import {
     ITxClient, 
 } from '../../client';
 import { IProvider } from '../../providers/IProvider';
-import { AccessGrant, Balance, Coin, MarkerAccount, MarkerStatus, MarkerType, Metadata } from '../../types';
+import { AccessGrant, Balance, Coin, MarkerAccount, MarkerStatus, MarkerType, DenomMetadata } from '../../types';
 
 import { IQueryClient, QueryClient } from '../../proto/provenance/marker/v1/query_grpc_pb';
 import * as cosmos_bank_v1beta1_bank_pb from "../../proto/cosmos/bank/v1beta1/bank_pb";
@@ -143,8 +142,8 @@ export class MarkerModule {
     }
 
     // Get metadata for marker
-    getMetadata(denom: string): Promise<Metadata> {
-        return new Promise<Metadata> ((resolve, reject) => {
+    getMetadata(denom: string): Promise<DenomMetadata> {
+        return new Promise<DenomMetadata> ((resolve, reject) => {
             const req = (new provenance_marker_v1_query_pb.QueryDenomMetadataRequest())
                 .setDenom(denom);
 
@@ -163,95 +162,71 @@ export class MarkerModule {
     //----------------------------------------------------------------------------------------------------------------------------------------------
 
     // Finalize the marker account
-    finalize(denom: string, admin?: string): jspb.Message {
+    finalize(denom: string, admin: string): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgFinalizeRequest())
-            .setDenom(denom);
-
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            .setDenom(denom)
+            .setAdministrator(admin);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Activate the marker account
-    activate(denom: string, admin?: string): jspb.Message {
+    activate(denom: string, admin: string): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgActivateRequest())
-            .setDenom(denom);
-
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            .setDenom(denom)
+            .setAdministrator(admin);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Cancel the marker account
-    cancel(denom: string, admin?: string): jspb.Message {
+    cancel(denom: string, admin: string): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgCancelRequest())
-            .setDenom(denom);
+            .setDenom(denom)
+            .setAdministrator(admin);
         
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
-        
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Mark the marker for deletion
-    delete(denom: string, admin?: string): jspb.Message {
+    delete(denom: string, admin: string): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgDeleteRequest())
-            .setDenom(denom);
+            .setDenom(denom)
+            .setAdministrator(admin);
         
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
-        
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Mint coins against the marker
-    mint(coin: Coin, admin?: string): jspb.Message {
+    mint(coin: Coin, admin: string): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgMintRequest())
             .setAmount((new cosmos_base_v1beta1_coin_pb.Coin())
                 .setAmount(coin.amount)
                 .setDenom(coin.denom)
-            );
-        
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            )
+            .setAdministrator(admin);
 
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Burn coins from the marker
-    burn(coin: Coin, admin?: string): jspb.Message {
+    burn(coin: Coin, admin: string): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgBurnRequest())
             .setAmount((new cosmos_base_v1beta1_coin_pb.Coin())
                 .setAmount(coin.amount)
                 .setDenom(coin.denom)
-            );
-
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            )
+            .setAdministrator(admin);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
-    // Grant access to a marker for the address coins from the marker
+    // Grant access to a marker for the address
     addAccess(
         denom: string, 
         accessList: AccessGrant[], 
-        admin?: string
-    ): jspb.Message {
+        admin: string
+    ): Message {
         var grants: provenance_marker_v1_accessgrant_pb.AccessGrant[] = [];
         accessList.forEach((accessGrant) => {
             grants.push((new provenance_marker_v1_accessgrant_pb.AccessGrant())
@@ -262,32 +237,24 @@ export class MarkerModule {
 
         const req = (new provenance_marker_v1_tx_pb.MsgAddAccessRequest())
             .setDenom(denom)
-            .setAccessList(grants);
-        
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            .setAccessList(grants)
+            .setAdministrator(admin);
 
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Revoke all access to a marker for the address
     deleteAccess(
         denom: string, 
         addr: string, 
-        admin?: string
-    ): jspb.Message {
+        admin: string
+    ): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgDeleteAccessRequest())
             .setDenom(denom)
-            .setRemovedAddress(addr);
-
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            .setRemovedAddress(addr)
+            .setAdministrator(admin);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Withdraw coins from the marker
@@ -295,8 +262,8 @@ export class MarkerModule {
         denom: string, 
         to: string, 
         amountList: Coin[], 
-        admin?: string
-    ): jspb.Message {
+        admin: string
+    ): Message {
         var amounts: cosmos_base_v1beta1_coin_pb.Coin[] = [];
         amountList.forEach((amount) => {
             amounts.push((new cosmos_base_v1beta1_coin_pb.Coin)
@@ -308,14 +275,10 @@ export class MarkerModule {
         const req = (new provenance_marker_v1_tx_pb.MsgWithdrawRequest())
             .setDenom(denom)
             .setToAddress(to)
-            .setAmountList(amounts);
-
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            .setAmountList(amounts)
+            .setAdministrator(admin);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Create a new marker
@@ -328,7 +291,7 @@ export class MarkerModule {
         allowGovernance: boolean, 
         fixedSupply: boolean,
         manager: string
-    ): jspb.Message {
+    ): Message {
         var grants: provenance_marker_v1_accessgrant_pb.AccessGrant[] = [];
         accessList.forEach((accessGrant) => {
             grants.push((new provenance_marker_v1_accessgrant_pb.AccessGrant())
@@ -350,20 +313,30 @@ export class MarkerModule {
             .setSupplyFixed(fixedSupply)
             .setManager(manager);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Transfer coins from one account to another
-    transfer(): jspb.Message {
+    transfer(
+        coin: Coin,
+        from: string,
+        to: string,
+        admin: string
+    ): Message {
         const req = (new provenance_marker_v1_tx_pb.MsgTransferRequest())
-            // TODO
-            ;
+            .setAmount((new cosmos_base_v1beta1_coin_pb.Coin())
+                .setAmount(coin.amount)
+                .setDenom(coin.denom)
+            )
+            .setFromAddress(from)
+            .setToAddress(to)
+            .setAdministrator(admin);
         
-        return req;
+        return new Message([req], this.txClient);
     }
 
     // Set metadata for a marker
-    setMetadata(metadata: Metadata, admin?: string): jspb.Message {
+    setMetadata(metadata: DenomMetadata, admin: string): Message {
         var denomUnits: cosmos_bank_v1beta1_bank_pb.DenomUnit[] = [];
         metadata.denomUnitsList.forEach((denomUnit) => {
             denomUnits.push((new cosmos_bank_v1beta1_bank_pb.DenomUnit())
@@ -381,14 +354,10 @@ export class MarkerModule {
                 .setDisplay(metadata.display)
                 .setName(metadata.name)
                 .setSymbol(metadata.symbol)
-            );
-        
-        if (typeof admin !== 'undefined') {
-            // TODO: is optional?
-            req.setAdministrator(admin);
-        }
+            )
+            .setAdministrator(admin);
 
-        return req;
+        return new Message([req], this.txClient);
     }
 
     protected readonly provider: IProvider;

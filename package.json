@@ -19,7 +19,6 @@
     "scripts": {
         "build": "npm run protoc && npx tsc",
         "clean": "npx rimraf lib && npx rimraf src/proto",
-        "postinstall": "npm run build",
         "prepare": "npm run rebuild",
         "protoc": "./scripts/protoc.sh && cp -R ./src/proto ./lib",
         "rebuild": "npm run clean && npm run build",

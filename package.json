@@ -24,6 +24,8 @@
         "rebuild": "npm run clean && npm run build",
         "test": "export NODE_ENV=test && mocha --require ts-node/register test/**/*.test.ts",
         "test:AttributeModule": "export NODE_ENV=test && mocha --require ts-node/register test/AttributeModule.test.ts",
+        "test:AuthCore": "export NODE_ENV=test && mocha --require ts-node/register test/AuthCore.test.ts",
+        "test:BankCore": "export NODE_ENV=test && mocha --require ts-node/register test/BankCore.test.ts",
         "test:MarkerModule": "export NODE_ENV=test && mocha --require ts-node/register test/MarkerModule.test.ts",
         "test:MessageUtils": "export NODE_ENV=test && mocha --require ts-node/register test/MessageUtils.test.ts",
         "test:NameModule": "export NODE_ENV=test && mocha --require ts-node/register test/NameModule.test.ts",

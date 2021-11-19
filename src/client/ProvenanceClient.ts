@@ -19,6 +19,7 @@ import { messageToAny } from '../utils/MessageUtils';
 import { Key } from '../wallet/Key';
 import {
     AuthCore,
+    BankCore,
 } from '../core';
 import { 
     AttributeModule, 
@@ -43,6 +44,7 @@ export class ProvenanceClient implements ITxClient {
 
         // core modules
         this.auth = new AuthCore(this.provider, this);
+        this.bank = new BankCore(this.provider, this);
 
         // provenance modules
         this.attribute = new AttributeModule(this.provider, this);
@@ -67,10 +69,10 @@ export class ProvenanceClient implements ITxClient {
                 Buffer.from(authInfoBytes), 
                 Buffer.from(txBodyBytes)
             )).forEach((signDocBytes, index) => {
-                if (baseReq.signers.length < index) {
-                    signatures.push(baseReq.signers[index].sign(signDocBytes));
-                } else {
+                if (index > (baseReq.signers.length - 1)) {
                     signatures.push(baseReq.signers[baseReq.signers.length - 1].sign(signDocBytes));
+                } else {
+                    signatures.push(baseReq.signers[index].sign(signDocBytes));
                 }
             });
 
@@ -245,6 +247,7 @@ export class ProvenanceClient implements ITxClient {
 
     // core modules
     public auth: AuthCore;
+    public bank: BankCore;
 
     // provenance modules
     public attribute: AttributeModule;

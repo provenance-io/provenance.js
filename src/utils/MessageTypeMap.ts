@@ -1,5 +1,8 @@
 import * as cosmos_auth_v1beta1_auth_pb from '../proto/cosmos/auth/v1beta1/auth_pb';
+
 import * as cosmos_bank_v1beta1_bank_pb from '../proto/cosmos/bank/v1beta1/bank_pb';
+import * as cosmos_bank_v1beta1_tx_pb from '../proto/cosmos/bank/v1beta1/tx_pb';
+
 import * as cosmos_crypto_secp256k1_keys_pb from '../proto/cosmos/crypto/secp256k1/keys_pb';
 
 import * as provenance_attribute_v1_attribute_pb from '../proto/provenance/attribute/v1/attribute_pb';
@@ -79,6 +82,24 @@ export const MessageTypeMap = [
     {
         type: cosmos_bank_v1beta1_bank_pb.Supply,
         typeUrl: `${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.Supply`
+    },
+
+    // cosmos.bank.v1beta1/tx.proto
+    {
+        type: cosmos_bank_v1beta1_tx_pb.MsgMultiSend,
+        typeUrl: `${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgMultiSend`
+    },
+    {
+        type: cosmos_bank_v1beta1_tx_pb.MsgMultiSendResponse,
+        typeUrl: `${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgMultiSendResponse`
+    },
+    {
+        type: cosmos_bank_v1beta1_tx_pb.MsgSend,
+        typeUrl: `${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgSend`
+    },
+    {
+        type: cosmos_bank_v1beta1_tx_pb.MsgSendResponse,
+        typeUrl: `${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgSendResponse`
     },
 
     // cosmos.crypto.secp256k1/keys.proto

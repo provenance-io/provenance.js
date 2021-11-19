@@ -230,7 +230,7 @@ describe('BankCore', function () {
 
     describe('#multiSend', function () {
 
-        it(``, async () => {
+        it(`Sends coin from multiple accounts to an account`, async () => {
             const txRes = await client.bank.multiSend([
                 // from
                 {
@@ -272,7 +272,7 @@ describe('BankCore', function () {
                     ]
                 }
             ]).broadcastTx([sender1, receiver1]);
-            
+
             expect(txRes.code).to.equal(0);
             expect(txRes.gasUsed).lessThanOrEqual(txRes.gasWanted);
 

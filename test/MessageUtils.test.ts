@@ -2,7 +2,10 @@ import { expect } from 'chai';
 import { getMessageTypeUrl } from '../src';
 
 import * as cosmos_auth_v1beta1_auth_pb from '../src/proto/cosmos/auth/v1beta1/auth_pb';
+
 import * as cosmos_bank_v1beta1_bank_pb from '../src/proto/cosmos/bank/v1beta1/bank_pb';
+import * as cosmos_bank_v1beta1_tx_pb from '../src/proto/cosmos/bank/v1beta1/tx_pb';
+
 import * as cosmos_crypto_secp256k1_keys_pb from '../src/proto/cosmos/crypto/secp256k1/keys_pb';
 
 import * as provenance_attribute_v1_attribute_pb from '../src/proto/provenance/attribute/v1/attribute_pb';
@@ -81,6 +84,22 @@ describe('MessageUtils', function () {
 
             it(`Identifies Supply`, async () => {
                 expect(getMessageTypeUrl(new cosmos_bank_v1beta1_bank_pb.Supply())).to.equal(`/${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.Supply`);
+            });
+
+            it(`Identifies MsgMultiSend`, async () => {
+                expect(getMessageTypeUrl(new cosmos_bank_v1beta1_tx_pb.MsgMultiSend())).to.equal(`/${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgMultiSend`);
+            });
+
+            it(`Identifies MsgMultiSendResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmos_bank_v1beta1_tx_pb.MsgMultiSendResponse())).to.equal(`/${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgMultiSendResponse`);
+            });
+
+            it(`Identifies MsgSend`, async () => {
+                expect(getMessageTypeUrl(new cosmos_bank_v1beta1_tx_pb.MsgSend())).to.equal(`/${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgSend`);
+            });
+
+            it(`Identifies MsgSendResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmos_bank_v1beta1_tx_pb.MsgSendResponse())).to.equal(`/${COSMOS_BANK_V1BETA1_TYPE_PACKAGE}.MsgSendResponse`);
             });
 
         });

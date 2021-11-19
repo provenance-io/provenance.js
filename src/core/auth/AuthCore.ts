@@ -1,5 +1,6 @@
 import * as grpc from 'grpc';
 
+import { ITxClient } from '../../client';
 import { BaseAccount, MarkerAccount } from '../../types';
 import { anyToMessage, getMessageTypeUrl } from '../../utils/MessageUtils';
 import { IProvider } from '../../providers/IProvider';
@@ -11,14 +12,27 @@ import * as provenance_marker_v1_marker_pb from '../../proto/provenance/marker/v
 
 export class AuthCore {
 
-    constructor(provider: IProvider) {
+    constructor(provider: IProvider, txClient: ITxClient) {
         this.provider = provider;
+        this.txClient = txClient;
         this.queryClient = new QueryClient(this.provider.network.uri.toString(), grpc.credentials.createInsecure());
     }
 
+    //----------------------------------------------------------------------------------------------------------------------------------------------
+    // Static Queries
+    //----------------------------------------------------------------------------------------------------------------------------------------------
+
     public static getBaseAccount(provider: IProvider, addr: string): Promise<BaseAccount> {
-        return (new AuthCore(provider).getBaseAccount(addr));
+        return (new AuthCore(provider, null).getBaseAccount(addr));
     }
+
+    public static getMarkerAccount(provider: IProvider, addr: string): Promise<MarkerAccount> {
+        return (new AuthCore(provider, null).getMarkerAccount(addr));
+    }
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------
+    // Query
+    //----------------------------------------------------------------------------------------------------------------------------------------------
 
     getBaseAccount(addr: string): Promise<BaseAccount> {
         return new Promise<BaseAccount> ((resolve, reject) => {
@@ -64,7 +78,8 @@ export class AuthCore {
         });
     }
 
-    private readonly provider: IProvider;
-    private queryClient: IQueryClient;
+    protected readonly provider: IProvider;
+    protected readonly txClient: ITxClient;
+    protected queryClient: IQueryClient;
 
 }

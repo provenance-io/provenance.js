@@ -17,6 +17,9 @@ import {
 } from '../types';
 import { messageToAny } from '../utils/MessageUtils';
 import { Key } from '../wallet/Key';
+import {
+    AuthCore,
+} from '../core';
 import { 
     AttributeModule, 
     MarkerModule, 
@@ -38,6 +41,10 @@ export class ProvenanceClient implements ITxClient {
         this.provider = provider;
         this.txClient = new ServiceClient(this.provider.network.uri.toString(), grpc.credentials.createInsecure());
 
+        // core modules
+        this.auth = new AuthCore(this.provider, this);
+
+        // provenance modules
         this.attribute = new AttributeModule(this.provider, this);
         this.marker = new MarkerModule(this.provider, this);
         this.metadata = new MetadataModule(this.provider, this);
@@ -236,6 +243,10 @@ export class ProvenanceClient implements ITxClient {
     private readonly provider: IProvider;
     private readonly txClient: IServiceClient;
 
+    // core modules
+    public auth: AuthCore;
+
+    // provenance modules
     public attribute: AttributeModule;
     public marker: MarkerModule;
     public metadata: MetadataModule;

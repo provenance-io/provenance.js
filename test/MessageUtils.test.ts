@@ -8,6 +8,9 @@ import * as cosmos_bank_v1beta1_tx_pb from '../src/proto/cosmos/bank/v1beta1/tx_
 
 import * as cosmos_crypto_secp256k1_keys_pb from '../src/proto/cosmos/crypto/secp256k1/keys_pb';
 
+import * as cosmwasm_wasm_v1_query_pb from "../src/proto/cosmwasm/wasm/v1/query_pb";
+import * as cosmwasm_wasm_v1_tx_pb from "../src/proto/cosmwasm/wasm/v1/tx_pb";
+
 import * as provenance_attribute_v1_attribute_pb from '../src/proto/provenance/attribute/v1/attribute_pb';
 import * as provenance_attribute_v1_query_pb from '../src/proto/provenance/attribute/v1/query_pb';
 import * as provenance_attribute_v1_tx_pb from '../src/proto/provenance/attribute/v1/tx_pb';
@@ -116,6 +119,128 @@ describe('MessageUtils', function () {
             });
 
         });
+
+        const COSMWASM_WASM_V1_TYPE_PACKAGE = 'cosmwasm.wasm.v1';
+        describe(COSMWASM_WASM_V1_TYPE_PACKAGE, function () {
+
+            it(`Identifies CodeInfoResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.CodeInfoResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.CodeInfoResponse`);
+            });
+
+            it(`Identifies QueryAllContractStateRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryAllContractStateRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryAllContractStateRequest`);
+            });
+
+            it(`Identifies QueryAllContractStateResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryAllContractStateResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryAllContractStateResponse`);
+            });
+
+            it(`Identifies QueryCodeRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryCodeRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodeRequest`);
+            });
+
+            it(`Identifies QueryCodeResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryCodeResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodeResponse`);
+            });
+
+            it(`Identifies QueryCodesRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryCodesRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodesRequest`);
+            });
+
+            it(`Identifies QueryCodesResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryCodesResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodesResponse`);
+            });
+
+            it(`Identifies QueryContractHistoryRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryContractHistoryRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractHistoryRequest`);
+            });
+
+            it(`Identifies QueryContractHistoryResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryContractHistoryResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractHistoryResponse`);
+            });
+
+            it(`Identifies QueryContractInfoRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryContractInfoRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractInfoRequest`);
+            });
+
+            it(`Identifies QueryContractInfoResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryContractInfoResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractInfoResponse`);
+            });
+
+            it(`Identifies QueryContractsByCodeRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryContractsByCodeRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractsByCodeRequest`);
+            });
+
+            it(`Identifies QueryContractsByCodeResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryContractsByCodeResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractsByCodeResponse`);
+            });
+
+            it(`Identifies QueryRawContractStateRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryRawContractStateRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryRawContractStateRequest`);
+            });
+
+            it(`Identifies QueryRawContractStateResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QueryRawContractStateResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryRawContractStateResponse`);
+            });
+
+            it(`Identifies QuerySmartContractStateRequest`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QuerySmartContractStateRequest())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QuerySmartContractStateRequest`);
+            });
+
+            it(`Identifies QuerySmartContractStateResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_query_pb.QuerySmartContractStateResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.QuerySmartContractStateResponse`);
+            });
+
+            it(`Identifies MsgClearAdmin`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgClearAdmin())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgClearAdmin`);
+            });
+
+            it(`Identifies MsgClearAdminResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgClearAdminResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgClearAdminResponse`);
+            });
+
+            it(`Identifies MsgExecuteContract`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgExecuteContract())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgExecuteContract`);
+            });
+
+            it(`Identifies MsgExecuteContractResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgExecuteContractResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgExecuteContractResponse`);
+            });
+
+            it(`Identifies MsgInstantiateContract`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgInstantiateContract())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgInstantiateContract`);
+            });
+
+            it(`Identifies MsgInstantiateContractResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgInstantiateContractResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgInstantiateContractResponse`);
+            });
+
+            it(`Identifies MsgMigrateContract`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgMigrateContract())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgMigrateContract`);
+            });
+
+            it(`Identifies MsgMigrateContractResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgMigrateContractResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgMigrateContractResponse`);
+            });
+
+            it(`Identifies MsgStoreCode`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgStoreCode())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgStoreCode`);
+            });
+
+            it(`Identifies MsgStoreCodeResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgStoreCodeResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgStoreCodeResponse`);
+            });
+
+            it(`Identifies MsgUpdateAdmin`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgUpdateAdmin())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgUpdateAdmin`);
+            });
+
+            it(`Identifies MsgUpdateAdminResponse`, async () => {
+                expect(getMessageTypeUrl(new cosmwasm_wasm_v1_tx_pb.MsgUpdateAdminResponse())).to.equal(`/${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgUpdateAdminResponse`);
+            });
+
+        });
+
 
         const PROVENANCE_ATTRIBUTE_V1_TYPE_PACKAGE = 'provenance.attribute.v1';
         describe(PROVENANCE_ATTRIBUTE_V1_TYPE_PACKAGE, function () {

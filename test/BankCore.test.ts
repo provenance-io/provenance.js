@@ -1,4 +1,5 @@
-import { assert, expect } from 'chai';
+import { expect, use } from 'chai';
+import * as chainAsPromise from 'chai-as-promised';
 import { 
     MarkerAccess,
     Cavendish,
@@ -32,6 +33,8 @@ const BankCoreTestConfig = {
     },
 };
 
+use(chainAsPromise);
+
 describe('BankCore', function () {
 
     this.timeout(15000);
@@ -43,16 +46,15 @@ describe('BankCore', function () {
 
     const wallet = Wallet.fromMnemonic(BankCoreTestConfig.BIP39_MNEMONIC, false);
     const sender1 = wallet.getKey(0, 0);
-    const sender2 = wallet.getKey(0, 1);
-    const receiver1 = wallet.getKey(0, 2);
-    const receiver2 = wallet.getKey(0, 3);
+    const receiver1 = wallet.getKey(0, 1);
+    const receiver2 = wallet.getKey(0, 2);
 
     before(async () => {
 
         // start the localnet blockchain
         await cavendish.start({
             mnemonic: BankCoreTestConfig.BIP39_MNEMONIC,
-            accounts: 2,
+            accounts: 1,
             hashSupply: BankCoreTestConfig.HASH.AMOUNT.toString(),
             markers: [
                 {
@@ -115,14 +117,10 @@ describe('BankCore', function () {
         it(`Fails to send coin from an account with insufficient funds`, async () => {
             const marker = await client.marker.getTotalSupply(BankCoreTestConfig.HASH.DENOM);
 
-            await client.bank.send(sender1.address, receiver1.address, [{
+            expect(client.bank.send(sender1.address, receiver1.address, [{
                 amount: (Number.parseInt(marker.amount) + 1).toString(),
                 denom: BankCoreTestConfig.HASH.DENOM
-            }]).broadcastTx(sender1).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to send coin from an account with insufficient funds`);
-            }).catch((err) => {
-                expect(err.message).to.contain('insufficient funds');
-            });
+            }]).broadcastTx(sender1)).to.be.rejected;
         });
 
     });

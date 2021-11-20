@@ -1,4 +1,5 @@
-import { assert, expect } from 'chai';
+import { expect, use } from 'chai';
+import * as chainAsPromise from 'chai-as-promised';
 import { Cavendish } from '@provenanceio/cavendish';
 
 import { MockProvider } from './mock/MockProvider';
@@ -21,6 +22,8 @@ const NameModuleTestConfig = {
     BINDPATH_TEST_PATH_BAD: 'name.path.test.blerg',
     BINDPATH_TEST_PATH_GOOD: 'name.path.test.pb'
 };
+
+use(chainAsPromise);
 
 describe('NameModule', function () {
 
@@ -48,15 +51,11 @@ describe('NameModule', function () {
     describe('#bindName', function () {
 
         it(`Cannot bind name without parent`, async () => {
-            await client.name.bindName(
+            expect(client.name.bindName(
                 NameModuleTestConfig.BINDNAME_TEST_NAME_1,
                 '',
                 owner.address
-            ).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to bind name without parent`);
-            }).catch((err) => {
-                expect(err.message).to.contain('parent name cannot be empty');
-            });
+            ).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
         it(`Binds name using (string, string, string)`, async () => {
@@ -119,14 +118,10 @@ describe('NameModule', function () {
     describe('#bindNamePath', function () {
 
         it(`Cannot bind name path without parent`, async () => {
-            await (await client.name.bindNamePath(
+            expect((await client.name.bindNamePath(
                 NameModuleTestConfig.BINDPATH_TEST_PATH_BAD, 
                 owner.address
-            )).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to bind name path without parent`);
-            }).catch((err) => {
-                expect(err.message).to.contain('parent name cannot be empty');
-            });
+            )).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
         it(`Binds name path`, async () => {
@@ -154,14 +149,10 @@ describe('NameModule', function () {
         });
 
         it(`Cannot delete an unbound name`, async () => {
-            await client.name.deleteName(
+            expect(client.name.deleteName(
                 NameModuleTestConfig.BINDNAME_TEST_NAME_1,
                 owner.address
-            ).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to delete unbound name`);
-            }).catch((err) => {
-                expect(err.message).to.contain('name does not exist');
-            });
+            ).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
     });
@@ -201,11 +192,7 @@ describe('NameModule', function () {
     describe('#resolveName', function () {
 
         it(`Cannot resolve an unbound name`, async () => {
-            await client.name.resolveName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_1}.${NameModuleTestConfig.ROOT_NAME}`).then((addr) => {
-                assert.fail(`Unexpected success: Should not be able to resolve an unbound name`);
-            }).catch((err) => {
-                expect(err.message).to.contain('no address bound to name');
-            });
+            expect(client.name.resolveName(`${NameModuleTestConfig.BINDNAME_TEST_NAME_1}.${NameModuleTestConfig.ROOT_NAME}`)).to.eventually.be.rejected;
         });
 
         it(`Resolves a bound name`, async () => {

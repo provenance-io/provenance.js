@@ -1,4 +1,5 @@
-import { assert, expect } from 'chai';
+import { assert, expect, use } from 'chai';
+import * as chainAsPromise from 'chai-as-promised';
 import { Cavendish } from '@provenanceio/cavendish';
 import { MockProvider } from './mock/MockProvider';
 
@@ -35,6 +36,8 @@ const MarkerModuleTestConfig = {
         WITHDRAW_AMOUNT: 123,
     }
 };
+
+use(chainAsPromise);
 
 describe('MarkerModule', function () {
 
@@ -323,23 +326,19 @@ describe('MarkerModule', function () {
     describe('#withdraw', function () {
 
         it(`Fails to withdraw tokens from a coin marker with insufficient funds`, async () => {
-            await client.marker.withdraw(
+            expect(client.marker.withdraw(
                 MarkerModuleTestConfig.HOTDOG_COIN_MARKER.DENOM, 
                 recipient.address, 
                 [{
-                    amount: (MarkerModuleTestConfig.HOTDOG_COIN_MARKER.WITHDRAW_AMOUNT + 1).toString(),
+                    amount: (MarkerModuleTestConfig.HOTDOG_COIN_MARKER.AMOUNT + 1).toString(),
                     denom: MarkerModuleTestConfig.HOTDOG_COIN_MARKER.DENOM
                 }],
                 coinAdmin.address
-            ).broadcastTx(coinAdmin).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to withdraw tokens from a coin marker with insufficient funds`);
-            }).catch((err) => {
-                expect(err.message).to.contain('insufficient funds');
-            });
+            ).broadcastTx(coinAdmin)).to.eventually.be.rejected;
         });
 
         it(`Fails to withdraw tokens from a restricted marker with insufficient funds`, async () => {
-            await client.marker.withdraw(
+            expect(client.marker.withdraw(
                 MarkerModuleTestConfig.ASSET_RESTRICTED_MARKER.DENOM, 
                 recipient.address, 
                 [{
@@ -347,11 +346,7 @@ describe('MarkerModule', function () {
                     denom: MarkerModuleTestConfig.ASSET_RESTRICTED_MARKER.DENOM
                 }],
                 assetAdmin.address
-            ).broadcastTx(assetAdmin).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to withdraw tokens from a restricted marker with insufficient funds`);
-            }).catch((err) => {
-                expect(err.message).to.contain('insufficient funds');
-            });
+            ).broadcastTx(assetAdmin)).to.eventually.be.rejected;
         });
 
         it(`Withdraws tokens from a coin marker`, async () => {
@@ -368,7 +363,13 @@ describe('MarkerModule', function () {
             expect(txRes.code).to.equal(0);
             expect(txRes.gasUsed).lessThanOrEqual(txRes.gasWanted);
 
-            // TODO: get bank balance for recipient account and verify new amount
+            const balance = await client.bank.balance(
+                recipient.address, 
+                MarkerModuleTestConfig.HOTDOG_COIN_MARKER.DENOM
+            );
+
+            expect(balance.denom).to.equal(MarkerModuleTestConfig.HOTDOG_COIN_MARKER.DENOM);
+            expect(balance.amount).to.equal(MarkerModuleTestConfig.HOTDOG_COIN_MARKER.WITHDRAW_AMOUNT.toString());
         });
 
         it(`Withdraws tokens from a restricted marker`, async () => {
@@ -435,7 +436,7 @@ describe('MarkerModule', function () {
         it(`Fails to broker transfer for a coin marker holder`, async () => {
             const marker = await client.marker.getMarker(MarkerModuleTestConfig.HOTDOG_COIN_MARKER.DENOM);
 
-            await client.marker.transfer(
+            expect(client.marker.transfer(
                 {
                     amount: MarkerModuleTestConfig.HOTDOG_COIN_MARKER.WITHDRAW_AMOUNT.toString(),
                     denom: MarkerModuleTestConfig.HOTDOG_COIN_MARKER.DENOM
@@ -443,11 +444,7 @@ describe('MarkerModule', function () {
                 recipient.address, 
                 marker.baseAccount.address,
                 coinAdmin.address
-            ).broadcastTx(coinAdmin).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to broker transfer for a coin marker`);
-            }).catch((err) => {
-                expect(err.message).to.contain('brokered transfer not supported');
-            });
+            ).broadcastTx(coinAdmin)).to.eventually.be.rejected;
         });
 
         /* TODO: Error: 2 UNKNOWN: failed to execute message; message index: 0: tp1sp4f0ymwc84j0f4d4cu72gvhjuw7wsszcutux7 account has not been granted authority to withdraw from tp1szmgnu930sf5yjhwqs7uqqhrg5lgjn3nv4np4d account

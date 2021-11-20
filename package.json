@@ -31,16 +31,19 @@
         "test:NameModule": "export NODE_ENV=test && mocha --require ts-node/register test/NameModule.test.ts",
         "test:Proto": "export NODE_ENV=test && mocha --require ts-node/register test/Proto.test.ts",
         "test:ProvenanceClient": "export NODE_ENV=test && mocha --require ts-node/register test/ProvenanceClient.test.ts",
-        "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts"
+        "test:Wallet": "export NODE_ENV=test && mocha --require ts-node/register test/Wallet.test.ts",
+        "test:WasmCore": "export NODE_ENV=test && mocha --require ts-node/register test/WasmCore.test.ts"
     },
     "devDependencies": {
         "@provenanceio/cavendish": "^1.7.5",
         "@types/async": "^3.2.9",
         "@types/chai": "^4.2.22",
+        "@types/chai-as-promised": "^7.1.4",
         "@types/mocha": "^9.0.0",
         "@types/node": "^16.11.6",
         "@types/ripemd160": "^2.0.0",
         "chai": "^4.3.4",
+        "chai-as-promised": "^7.1.1",
         "grpc-tools": "^1.11.2",
         "grpc_tools_node_protoc_ts": "^5.3.2",
         "mocha": "^9.1.2",
@@ -49,6 +52,7 @@
         "typescript": "^4.4.4"
     },
     "dependencies": {
+        "ajv": "^8.8.1",
         "async": "^3.2.2",
         "bech32": "^2.0.0",
         "bip32": "^2.0.6",

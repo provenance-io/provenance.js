@@ -1,4 +1,5 @@
-import { assert, expect } from 'chai';
+import { expect, use } from 'chai';
+import * as chainAsPromise from 'chai-as-promised';
 import { Cavendish } from '@provenanceio/cavendish';
 import { MockProvider } from './mock/MockProvider';
 
@@ -28,6 +29,8 @@ const AttributeModuleTestConfig = {
     },
 
 };
+
+use(chainAsPromise);
 
 describe('AttributeModule', function () {
 
@@ -155,7 +158,7 @@ describe('AttributeModule', function () {
     describe('#updateAttribute', function () {
 
         it(`Cannot update an attribute that has not been added to an account`, async () => {
-            await client.attribute.updateAttribute(
+            expect(client.attribute.updateAttribute(
                 account2.address, // this account doesn't have the attribute
                 AttributeModuleTestConfig.JSON_ATTRIBUTE.NAME,
                 AttributeType.ATTRIBUTE_TYPE_JSON,
@@ -163,11 +166,7 @@ describe('AttributeModule', function () {
                 AttributeModuleTestConfig.JSON_ATTRIBUTE.VALUE,
                 AttributeModuleTestConfig.JSON_ATTRIBUTE.UPDATED_VALUE,
                 owner.address
-            ).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to update an attribute that doesn't exist`);
-            }).catch((err) => {
-                expect(err.message).to.contain('no attributes updated with name');
-            });
+            ).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
         it(`Updates a JSON attribute on an account`, async () => {
@@ -271,15 +270,11 @@ describe('AttributeModule', function () {
     describe('#deleteAttribute', function () {
 
         it(`Cannot delete an attribute that has not been added to an account`, async () => {
-            await client.attribute.deleteAttribute(
+            expect(client.attribute.deleteAttribute(
                 account2.address, // this account doesn't have the attribute
                 AttributeModuleTestConfig.STRING_ATTRIBUTE.NAME,
                 owner.address
-            ).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to delete an attribute that doesn't exist`);
-            }).catch((err) => {
-                expect(err.message).to.contain('no keys deleted with name');
-            });
+            ).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
         it(`Deletes an attribute on an account`, async () => {
@@ -317,29 +312,21 @@ describe('AttributeModule', function () {
     describe('#deleteDistinctAttribute', function () {
 
         it(`Cannot delete a distinct attribute on an account when the value does not match`, async () => {
-            await client.attribute.deleteDistinctAttribute(
+            expect(client.attribute.deleteDistinctAttribute(
                 account1.address,
                 AttributeModuleTestConfig.STRING_ATTRIBUTE.NAME, 
                 AttributeModuleTestConfig.STRING_ATTRIBUTE.VALUE, // value should be AttributeModuleTestConfig.STRING_ATTRIBUTE.UPDATED_VALUE
                 owner.address
-            ).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to delete a distinct attribute when the value does not match`);
-            }).catch((err) => {
-                expect(err.message).to.contain('no keys deleted with name');
-            });
+            ).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
         it(`Cannot delete a distinct attribute that has not been added to an account`, async () => {
-            const txRes = await client.attribute.deleteDistinctAttribute(
+            expect(client.attribute.deleteDistinctAttribute(
                 account2.address, // this account doesn't have the attribute
                 AttributeModuleTestConfig.STRING_ATTRIBUTE.NAME, 
                 AttributeModuleTestConfig.STRING_ATTRIBUTE.VALUE,
                 owner.address
-            ).broadcastTx(owner).then((txRes) => {
-                assert.fail(`Unexpected success: Should not be able to delete a distinct attribute that doesn't exist`);
-            }).catch((err) => {
-                expect(err.message).to.contain('no keys deleted with name');
-            });
+            ).broadcastTx(owner)).to.eventually.be.rejected;
         });
 
         it(`Deletes a distinct JSON attribute on an account`, async () => {

@@ -5,6 +5,9 @@ import * as cosmos_bank_v1beta1_tx_pb from '../proto/cosmos/bank/v1beta1/tx_pb';
 
 import * as cosmos_crypto_secp256k1_keys_pb from '../proto/cosmos/crypto/secp256k1/keys_pb';
 
+import * as cosmwasm_wasm_v1_query_pb from "../proto/cosmwasm/wasm/v1/query_pb";
+import * as cosmwasm_wasm_v1_tx_pb from "../proto/cosmwasm/wasm/v1/tx_pb";
+
 import * as provenance_attribute_v1_attribute_pb from '../proto/provenance/attribute/v1/attribute_pb';
 import * as provenance_attribute_v1_query_pb from '../proto/provenance/attribute/v1/query_pb';
 import * as provenance_attribute_v1_tx_pb from '../proto/provenance/attribute/v1/tx_pb';
@@ -32,6 +35,8 @@ import * as provenance_name_v1_tx_pb from '../proto/provenance/name/v1/tx_pb';
 const COSMOS_AUTH_V1BETA1_TYPE_PACKAGE = 'cosmos.auth.v1beta1';
 const COSMOS_BANK_V1BETA1_TYPE_PACKAGE = 'cosmos.bank.v1beta1';
 const COSMOS_CRYPTO_SECP256K1_TYPE_PACKAGE = 'cosmos.crypto.secp256k1';
+
+const COSMWASM_WASM_V1_TYPE_PACKAGE = 'cosmwasm.wasm.v1';
 
 const PROVENANCE_ATTRIBUTE_V1_TYPE_PACKAGE = 'provenance.attribute.v1';
 const PROVENANCE_MARKER_V1_TYPE_PACKAGE = 'provenance.marker.v1';
@@ -110,6 +115,126 @@ export const MessageTypeMap = [
     {
         type: cosmos_crypto_secp256k1_keys_pb.PubKey,
         typeUrl: `${COSMOS_CRYPTO_SECP256K1_TYPE_PACKAGE}.PubKey`
+    },
+
+    // cosmwasm.wasm.v1/query.proto
+    {
+        type: cosmwasm_wasm_v1_query_pb.CodeInfoResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.CodeInfoResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryAllContractStateRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryAllContractStateRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryAllContractStateResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryAllContractStateResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryCodeRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodeRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryCodeResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodeResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryCodesRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodesRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryCodesResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryCodesResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryContractHistoryRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractHistoryRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryContractHistoryResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractHistoryResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryContractInfoRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractInfoRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryContractInfoResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractInfoResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryContractsByCodeRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractsByCodeRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryContractsByCodeResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryContractsByCodeResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryRawContractStateRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryRawContractStateRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QueryRawContractStateResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QueryRawContractStateResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QuerySmartContractStateRequest,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QuerySmartContractStateRequest`
+    },
+    {
+        type: cosmwasm_wasm_v1_query_pb.QuerySmartContractStateResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.QuerySmartContractStateResponse`
+    },
+
+    // cosmwasm.wasm.v1/tx.proto
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgClearAdmin,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgClearAdmin`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgClearAdminResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgClearAdminResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgExecuteContract,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgExecuteContract`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgExecuteContractResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgExecuteContractResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgInstantiateContract,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgInstantiateContract`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgInstantiateContractResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgInstantiateContractResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgMigrateContract,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgMigrateContract`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgMigrateContractResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgMigrateContractResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgStoreCode,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgStoreCode`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgStoreCodeResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgStoreCodeResponse`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgUpdateAdmin,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgUpdateAdmin`
+    },
+    {
+        type: cosmwasm_wasm_v1_tx_pb.MsgUpdateAdminResponse,
+        typeUrl: `${COSMWASM_WASM_V1_TYPE_PACKAGE}.MsgUpdateAdminResponse`
     },
 
     // provenance.attribute.v1/attribute.proto

@@ -82,7 +82,20 @@ export class ContractFactory {
 
     deployFromCodeId(label: string, codeId: number, args?: any, admin?: string, funds?: Coin[]): Promise<Contractish> {
         return new Promise<Contractish>(async (resolve, reject) => {
-            // TODO: validate the args
+            // validate the arguments
+            var validator;
+            for (var key in this.ajv.schemas) {
+                const schema = this.ajv.schemas[key];
+                if (schema.schema['title'] === this.msgDefs.instantiate) {
+                    validator = this.ajv.compile(schema.schema);
+                }
+            }
+            if (validator === undefined) {
+                throw new Error('Missing schema for instantiate message');
+            }
+            if (!validator(args)) {
+                throw new Error(`Invalid argument(s): Schema validation failed`);
+            }
 
             var txRes;
             try {

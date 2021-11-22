@@ -10,7 +10,6 @@ import { Cavendish } from '@provenanceio/cavendish';
 import { MockProvider } from './mock/MockProvider';
 
 import { 
-    Contract,
     ContractFactory,
     ProvenanceClient,
     Wallet, 

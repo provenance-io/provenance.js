@@ -57,7 +57,7 @@ export class Contract {
 
         for (var key in ajv.schemas) {
             const schema = ajv.schemas[key];
-            switch(schema.schema['title']) {
+            switch (schema.schema['title']) {
                 case msgDefs.execute: { this.generateExecuteFunctions(schema); } break;
                 case msgDefs.migrate: { this.generateMigrateFunctions(schema); } break;
                 case msgDefs.query: { this.generateQueryFunctions(schema); } break;
@@ -159,6 +159,12 @@ export class Contract {
                         }
                     } else {
                         throw new Error(`Missing argument(s): Must include the codeId to migrate to`);
+                    }
+
+                    // validate the message
+                    const validator = this.ajv.compile(migrateFuncSchema);
+                    if (!validator(msg)) {
+                        throw new Error(`Invalid argument(s): Schema validation failed`);
                     }
 
                     // construct the contract migrate message

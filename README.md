@@ -13,23 +13,24 @@ The provenance.js library aims to be a complete and compact Javascript/TypeScrip
 
 * Import and export BIP 39 mnemonic phrases (12 word backup phrases).
 * Connect to Provenance nodes over [gRPC](https://grpc.io/) provider.
+* Support for core Cosmos modules:
+  * Bank
+  * WASM
 * Support for Provenance modules:
   *  Attribute
+  *  Marker
   *  Name
 * Fully TypeScript ready, with definition files and full TypeScript source.
+* Import contract ABI from [JSON Schema](http://json-schema.org) to query and transact with contracts.
 
 ### Coming Soon
 
 * Connection provider abstraction.
 * Support for core Cosmos modules:
    *  Account
-   *  Bank
    *  Mint
-   *  WASM
 * Support for Provenance modules:
-  *  Marker
   *  Metadata
-* Import contract ABI from [JSON Schema](http://json-schema.org) to query and transact with contracts.
 * Suite of tools for event stream monitoring and filtering.
 
 ## License

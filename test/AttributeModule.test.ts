@@ -34,7 +34,7 @@ use(chainAsPromise);
 
 describe('AttributeModule', function () {
 
-    this.timeout(15000);
+    this.timeout(30000);
 
     const cavendish = new Cavendish();
 

@@ -37,7 +37,7 @@ use(chainAsPromise);
 
 describe('ContractFactory', function () {
 
-    this.timeout(15000);
+    this.timeout(30000);
 
     const cavendish = new Cavendish();
 

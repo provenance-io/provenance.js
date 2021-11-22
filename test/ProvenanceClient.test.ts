@@ -7,7 +7,7 @@ import {
 
 describe('ProvenanceClient', function () {
 
-    this.timeout(15000);
+    this.timeout(30000);
 
     const provider = new MockProvider();
     const client = new ProvenanceClient(provider);

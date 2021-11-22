@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { SchemaEnv } from 'ajv/lib/compile';
+import { SchemaEnv } from 'ajv/dist/compile';
 import * as Case from 'case';
 
 import { 

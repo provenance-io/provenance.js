@@ -20,7 +20,7 @@
         "build": "npm run protoc && npx tsc",
         "clean": "npx rimraf lib && npx rimraf src/proto",
         "prepublishOnly": "npm run rebuild",
-        "protoc": "./scripts/protoc.sh && cp -R ./src/proto ./lib",
+        "protoc": "./scripts/protoc.sh && mkdir -p ./lib && cp -R ./src/proto ./lib",
         "rebuild": "npm run clean && npm run build",
         "test": "export NODE_ENV=test && mocha --require ts-node/register test/**/*.test.ts",
         "test:AttributeModule": "export NODE_ENV=test && mocha --require ts-node/register test/AttributeModule.test.ts",
@@ -37,7 +37,7 @@
         "test:WasmCore": "export NODE_ENV=test && mocha --require ts-node/register test/WasmCore.test.ts"
     },
     "devDependencies": {
-        "@provenanceio/cavendish": "^1.7.5",
+        "@provenanceio/cavendish": "^1.7.6-beta1",
         "@types/async": "^3.2.9",
         "@types/chai": "^4.2.22",
         "@types/chai-as-promised": "^7.1.4",

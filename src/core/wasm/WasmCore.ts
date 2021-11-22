@@ -249,15 +249,6 @@ export class WasmCore {
      * @returns 
      */
     storeCode(bytecode: Buffer, sender: string, access?: CodeAccessConfig): Message {
-        /*
-        if (access === undefined) {
-            access = {
-                address: sender,
-                permission: CodeAccessType.ACCESS_TYPE_ONLY_ADDRESS
-            }
-        }
-        */
-
         const req = (new cosmwasm_wasm_v1_tx_pb.MsgStoreCode())
             .setWasmByteCode(bytecode)
             .setSender(sender);

@@ -18,14 +18,12 @@ import {
 const WasmCoreTestConfig = {
     BIP39_MNEMONIC: 'name broom medal pen slogan blush version banana message grant all decline weekend rhythm near art imitate milk winter clap awesome green soccer beauty',
 
-    SMART_CONTRACT_NAME_PATH: 'sc.pb',
-
     HELLO_WORLD: {
         INSTANCE_1: {
             WASM_FILE: './test/contract/hello_world_v0.1.0/hello_world.wasm',
             INIT_ARGS: {
-                "bind_name": "hello-1.sc.pb",
-                "contract_name": "hello_world",
+                bind_name: 'hello-1.sc.pb',
+                contract_name: 'hello_world',
             },
             CONTRACT_LABEL: 'hello_world_1',
             VERSION: '0.1.0',
@@ -33,8 +31,8 @@ const WasmCoreTestConfig = {
         INSTANCE_2: {
             WASM_FILE: './test/contract/hello_world_v0.1.1/hello_world.wasm',
             INIT_ARGS: {
-                "bind_name": "hello-2.sc.pb",
-                "contract_name": "hello_world",
+                bind_name: 'hello-2.sc.pb',
+                contract_name: 'hello_world',
             },
             CONTRACT_LABEL: 'hello_world_2',
             VERSION: '0.1.1',
@@ -89,20 +87,15 @@ describe('WasmCore', function () {
         // start the localnet blockchain
         await cavendish.start({
             mnemonic: WasmCoreTestConfig.BIP39_MNEMONIC,
-            accounts: 3
+            accounts: 3,
+            rootNames: [
+                { name: 'pb', restrict: false },
+                { name: 'sc.pb', restrict: false },
+            ]
         }, {
             background: true,
             force: true
         });
-
-        // bind the root smart contract name path
-        const bindNameTxRes = await (await client.name.bindNamePath(
-            WasmCoreTestConfig.SMART_CONTRACT_NAME_PATH, 
-            creator.address
-        )).broadcastTx(creator);
-
-        expect(bindNameTxRes.code).to.equal(0);
-        expect(bindNameTxRes.gasUsed).lessThanOrEqual(bindNameTxRes.gasWanted);
 
     });
 

@@ -40,6 +40,8 @@ export class ProvenanceClient implements ITxClient {
      * @param provider The provenance node network provider.
      */
     constructor(provider: IProvider) {
+        ProvenanceClient.singleton = this;
+
         this.provider = provider;
         this.txClient = new ServiceClient(this.provider.network.uri.toString(), grpc.credentials.createInsecure());
 
@@ -243,6 +245,12 @@ export class ProvenanceClient implements ITxClient {
             });
         });
     }
+
+    public static getSingleton(): ProvenanceClient {
+        return ProvenanceClient.singleton;
+    }
+
+    private static singleton: ProvenanceClient;
 
     private readonly provider: IProvider;
     private readonly txClient: IServiceClient;

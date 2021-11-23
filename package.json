@@ -2,7 +2,7 @@
     "name": "@provenanceio/provenance.js",
     "description": "Provenance library and wallet implementation in Typescript/Javascript",
     "homepage": "https://provenance.io/",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "private": false,
     "main": "lib/index.js",
     "types": "lib/index.d.ts",

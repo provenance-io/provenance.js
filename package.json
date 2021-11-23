@@ -37,7 +37,7 @@
         "test:WasmCore": "export NODE_ENV=test && mocha --require ts-node/register test/WasmCore.test.ts"
     },
     "devDependencies": {
-        "@provenanceio/cavendish": "^1.7.6-beta2",
+        "@provenanceio/cavendish": "^1.7.6-beta3",
         "@types/async": "^3.2.9",
         "@types/chai": "^4.2.22",
         "@types/chai-as-promised": "^7.1.4",

@@ -1,1 +1,2 @@
-export { GrpcProvider } from "./GrpcProvider";
+export * from "./GrpcProvider";
+export * from "./IProvider";

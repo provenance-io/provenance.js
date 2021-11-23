@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 
 import {
     Contract,
@@ -23,7 +24,7 @@ export class ContractFactory {
         this.schemas = schemas;
         this.signer = signer;
 
-        this.msgDefs = _.merge(msgDefs, DEFAULT_MESSAGE_DEFINITIONS);
+        this.msgDefs = _.merge(DEFAULT_MESSAGE_DEFINITIONS, msgDefs);
 
         if (client === undefined) {
             this.client = ProvenanceClient.getSingleton();
@@ -41,7 +42,11 @@ export class ContractFactory {
             schemaObjs.push(schemaObj);
         });
 
-        this.ajv = new Ajv({ schemas: schemaObjs });
+        this.ajv = new Ajv({ 
+            schemas: schemaObjs,
+            strict: false
+        });
+        addFormats(this.ajv);
     }
 
     attach(addr: string): Promise<Contractish> {

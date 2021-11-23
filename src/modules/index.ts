@@ -1,4 +1,4 @@
-export { AttributeModule } from "./attribute/AttributeModule";
-export { MarkerModule } from "./marker/MarkerModule";
-export { MetadataModule } from "./metadata/MetadataModule";
-export { NameModule } from "./name/NameModule";
+export * from './attribute/AttributeModule';
+export * from './marker/MarkerModule';
+export * from './metadata/MetadataModule';
+export * from './name/NameModule';

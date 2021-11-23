@@ -1,2 +1,3 @@
-export { Key } from "./Key";
-export { Wallet } from "./Wallet";
+export * from "./Key";
+export * from "./ISigner";
+export * from "./Wallet";

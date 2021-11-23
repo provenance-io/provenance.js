@@ -12,7 +12,6 @@ describe('Wallet', function () {
             const key = wallet.getKey(0, idx);
             expect(key.address).to.equal(EXPECTED_TESTNET_KEYS[idx].address);
             expect(key.publicKey).to.equal(EXPECTED_TESTNET_KEYS[idx].publicKey);
-            // TODO: expect(key.privateKey).to.equal(EXPECTED_TESTNET_KEYS[idx].privateKey);
         }
     });
 
@@ -22,7 +21,6 @@ describe('Wallet', function () {
             const key = wallet.getKey(0, idx);
             expect(key.address).to.equal(EXPECTED_MAINNET_KEYS[idx].address);
             expect(key.publicKey).to.equal(EXPECTED_MAINNET_KEYS[idx].publicKey);
-            // TODO: expect(key.privateKey).to.equal(EXPECTED_MAINNET_KEYS[idx].privateKey);
         }
     });
 

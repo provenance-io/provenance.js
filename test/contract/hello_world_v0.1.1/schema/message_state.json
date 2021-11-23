@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MessageState",
+  "type": "object",
+  "required": [
+    "id",
+    "message"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

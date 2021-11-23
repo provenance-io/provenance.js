@@ -6,9 +6,6 @@
 
 The provenance.js library aims to be a complete and compact Javascript/TypeScript library for interacting with the Provenance Blockchain and its ecosystem.
 
-**WARNING!**
-***This library is under active development and has not been released. Use at your own discretion.***
-
 ## Features
 
 * Import and export BIP 39 mnemonic phrases (12 word backup phrases).
@@ -28,6 +25,7 @@ The provenance.js library aims to be a complete and compact Javascript/TypeScrip
 * Connection provider abstraction.
 * Support for core Cosmos modules:
    *  Account
+   *  Authz
    *  Mint
 * Support for Provenance modules:
   *  Metadata

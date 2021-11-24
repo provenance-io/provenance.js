@@ -1,5 +1,5 @@
 import { expect, use } from 'chai';
-import * as chainAsPromise from 'chai-as-promised';
+import chaiAsPromise from 'chai-as-promised';
 import { 
     MarkerAccess,
     Cavendish,
@@ -33,7 +33,7 @@ const BankCoreTestConfig = {
     },
 };
 
-use(chainAsPromise);
+use(chaiAsPromise);
 
 describe('BankCore', function () {
 

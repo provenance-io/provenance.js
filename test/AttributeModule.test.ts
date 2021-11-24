@@ -1,5 +1,5 @@
 import { expect, use } from 'chai';
-import * as chainAsPromise from 'chai-as-promised';
+import chaiAsPromise from 'chai-as-promised';
 import { Cavendish } from '@provenanceio/cavendish';
 import { MockProvider } from './mock/MockProvider';
 
@@ -30,7 +30,7 @@ const AttributeModuleTestConfig = {
 
 };
 
-use(chainAsPromise);
+use(chaiAsPromise);
 
 describe('AttributeModule', function () {
 

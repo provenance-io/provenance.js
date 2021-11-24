@@ -1,5 +1,5 @@
 import { expect, use } from 'chai';
-import * as chainAsPromise from 'chai-as-promised';
+import chaiAsPromise from 'chai-as-promised';
 import { createHash } from 'crypto';
 import { 
     existsSync,
@@ -33,7 +33,7 @@ const ContractFactoryTestConfig = {
     },
 };
 
-use(chainAsPromise);
+use(chaiAsPromise);
 
 describe('ContractFactory', function () {
 

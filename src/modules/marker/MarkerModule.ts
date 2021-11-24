@@ -5,7 +5,15 @@ import {
     ITxClient, 
 } from '../../client';
 import { IProvider } from '../../providers/IProvider';
-import { AccessGrant, Balance, Coin, MarkerAccount, MarkerStatus, MarkerType, DenomMetadata } from '../../types';
+import { 
+    AccessGrant, 
+    Balance, 
+    Coin, 
+    MarkerAccount, 
+    MarkerStatus, 
+    MarkerType, 
+    DenomMetadata,
+} from '../../types';
 
 import { IQueryClient, QueryClient } from '../../proto/provenance/marker/v1/query_grpc_pb';
 import * as cosmos_bank_v1beta1_bank_pb from "../../proto/cosmos/bank/v1beta1/bank_pb";

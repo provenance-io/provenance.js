@@ -2,10 +2,20 @@ name: Build & Test
 
 on:
   push:
+    paths:
+      - 'proto/**/*.proto'
+      - 'src/**/*.ts'
+      - 'test/**/*.ts'
+      - 'package.json'
     branches:
       - main
       - develop
   pull_request:
+    paths:
+      - 'proto/**/*.proto'
+      - 'src/**/*.ts'
+      - 'test/**/*.ts'
+      - 'package.json'
     branches:
       - develop
 

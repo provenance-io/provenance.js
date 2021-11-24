@@ -708,13 +708,358 @@ export const MessageTypeMap = [
     // provenance.metadata.v1.p8e/p8e.proto
 
     // provenance.metadata.v1/query.proto
+    {
+        type: provenance_metadata_v1_query_pb.ContractSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ContractSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ContractSpecificationsAllRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationsAllRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ContractSpecificationsAllResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationsAllResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSAllLocatorsRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSAllLocatorsRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSAllLocatorsResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSAllLocatorsResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorParamsRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorParamsRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorParamsResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorParamsResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorsByScopeRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByScopeRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorsByScopeResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByScopeResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorsByURIRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByURIRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OSLocatorsByURIResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByURIResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OwnershipRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OwnershipRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.OwnershipResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OwnershipResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.QueryParamsRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.QueryParamsRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.QueryParamsResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.QueryParamsResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordSpecificationsAllRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsAllRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordSpecificationsAllResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsAllResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordSpecificationsForContractSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsForContractSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordSpecificationsForContractSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsForContractSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordsAllRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsAllRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordsAllResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsAllResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordsRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.RecordsResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopeRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopeResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopeSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopeSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopeSpecificationsAllRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationsAllRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopeSpecificationsAllResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationsAllResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopesAllRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopesAllRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ScopesAllResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopesAllResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.SessionsAllRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsAllRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.SessionsAllResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsAllResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.SessionsRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.SessionsResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsResponse`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ValueOwnershipRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ValueOwnershipRequest`
+    },
+    {
+        type: provenance_metadata_v1_query_pb.ValueOwnershipResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ValueOwnershipResponse`
+    },
 
     // provenance.name.v1/scope.proto
 
     // provenance.name.v1/specification.proto
 
     // provenance.name.v1/tx.proto
+    {
+        type: provenance_metadata_v1_tx_pb.MsgAddContractSpecToScopeSpecRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddContractSpecToScopeSpecRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgAddContractSpecToScopeSpecResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddContractSpecToScopeSpecResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgAddScopeDataAccessRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeDataAccessRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgAddScopeDataAccessResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeDataAccessResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgAddScopeOwnerRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeOwnerRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgAddScopeOwnerResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeOwnerResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgBindOSLocatorRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgBindOSLocatorRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgBindOSLocatorResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgBindOSLocatorResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteContractSpecFromScopeSpecRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecFromScopeSpecRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteContractSpecFromScopeSpecResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecFromScopeSpecResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteContractSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteContractSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteOSLocatorRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteOSLocatorRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteOSLocatorResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteOSLocatorResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteRecordRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteRecordResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteRecordSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteRecordSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeDataAccessRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeDataAccessRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeDataAccessResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeDataAccessResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeOwnerRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeOwnerRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeOwnerResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeOwnerResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgDeleteScopeSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgModifyOSLocatorRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgModifyOSLocatorRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgModifyOSLocatorResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgModifyOSLocatorResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgP8eMemorializeContractRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgP8eMemorializeContractRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgP8eMemorializeContractResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgP8eMemorializeContractResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteContractSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteContractSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteContractSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteContractSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteP8eContractSpecRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteP8eContractSpecRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteP8eContractSpecResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteP8eContractSpecResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteRecordRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteRecordResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteRecordSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteRecordSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteScopeRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteScopeResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteScopeSpecificationRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeSpecificationRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteScopeSpecificationResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeSpecificationResponse`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteSessionRequest,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteSessionRequest`
+    },
+    {
+        type: provenance_metadata_v1_tx_pb.MsgWriteSessionResponse,
+        typeUrl: `${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteSessionResponse`
+    },
 
+    // provenance.name.v1/name.proto
     {
         type: provenance_name_v1_name_pb.CreateRootNameProposal,
         typeUrl: `${PROVENANCE_NAME_V1_TYPE_PACKAGE}.CreateRootNameProposal`

@@ -1,5 +1,5 @@
 import { assert, expect, use } from 'chai';
-import * as chainAsPromise from 'chai-as-promised';
+import chaiAsPromise from 'chai-as-promised';
 import { createHash } from 'crypto';
 import { 
     existsSync,
@@ -47,7 +47,7 @@ const WasmCoreTestConfig = {
     }
 };
 
-use(chainAsPromise);
+use(chaiAsPromise);
 
 describe('WasmCore', function () {
 

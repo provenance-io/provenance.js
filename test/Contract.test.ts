@@ -1,5 +1,5 @@
 import { expect, use } from 'chai';
-import * as chainAsPromise from 'chai-as-promised';
+import chaiAsPromise from 'chai-as-promised';
 import { 
     existsSync,
     readFileSync,
@@ -66,7 +66,7 @@ const ContractTestConfig = {
     },
 };
 
-use(chainAsPromise);
+use(chaiAsPromise);
 
 describe('Contract', function () {
 

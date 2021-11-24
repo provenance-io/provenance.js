@@ -1,7 +1,7 @@
 import { bech32 } from 'bech32';
 import * as bip32 from 'bip32';
 import { createHash } from 'crypto';
-import * as RIPEMD160 from 'ripemd160';
+import RIPEMD160 from 'ripemd160';
 
 import { ISigner } from './ISigner';
 import { BaseAccount } from '../types/Cosmos';

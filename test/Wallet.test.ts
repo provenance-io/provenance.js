@@ -1,6 +1,6 @@
-import { expect, use } from 'chai';
+import { expect } from 'chai';
 
-import { Wallet } from '../src/wallet/Wallet';
+import { Wallet } from '../src';
 
 describe('Wallet', function () {
 

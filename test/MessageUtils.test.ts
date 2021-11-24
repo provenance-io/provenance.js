@@ -611,7 +611,437 @@ describe('MessageUtils', function () {
         const PROVENANCE_METADATA_V1_TYPE_PACKAGE = 'provenance.metadata.v1';
         describe(PROVENANCE_METADATA_V1_TYPE_PACKAGE, function () {
 
-            // TODO
+            it(`Identifies EventContractSpecificationCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventContractSpecificationCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventContractSpecificationCreated`);
+            });
+
+            it(`Identifies EventContractSpecificationDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventContractSpecificationDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventContractSpecificationDeleted`);
+            });
+
+            it(`Identifies EventContractSpecificationUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventContractSpecificationUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventContractSpecificationUpdated`);
+            });
+
+            it(`Identifies EventOSLocatorCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventOSLocatorCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventOSLocatorCreated`);
+            });
+
+            it(`Identifies EventOSLocatorDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventOSLocatorDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventOSLocatorDeleted`);
+            });
+
+            it(`Identifies EventOSLocatorUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventOSLocatorUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventOSLocatorUpdated`);
+            });
+
+            it(`Identifies EventRecordCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventRecordCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventRecordCreated`);
+            });
+
+            it(`Identifies EventRecordDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventRecordDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventRecordDeleted`);
+            });
+
+            it(`Identifies EventRecordSpecificationCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventRecordSpecificationCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventRecordSpecificationCreated`);
+            });
+
+            it(`Identifies EventRecordSpecificationDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventRecordSpecificationDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventRecordSpecificationDeleted`);
+            });
+
+            it(`Identifies EventRecordSpecificationUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventRecordSpecificationUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventRecordSpecificationUpdated`);
+            });
+
+            it(`Identifies EventRecordUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventRecordUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventRecordUpdated`);
+            });
+
+            it(`Identifies EventScopeCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventScopeCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventScopeCreated`);
+            });
+
+            it(`Identifies EventScopeDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventScopeDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventScopeDeleted`);
+            });
+
+            it(`Identifies EventScopeSpecificationCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventScopeSpecificationCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventScopeSpecificationCreated`);
+            });
+
+            it(`Identifies EventScopeSpecificationDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventScopeSpecificationDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventScopeSpecificationDeleted`);
+            });
+
+            it(`Identifies EventScopeSpecificationUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventScopeSpecificationUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventScopeSpecificationUpdated`);
+            });
+
+            it(`Identifies EventScopeUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventScopeUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventScopeUpdated`);
+            });
+
+            it(`Identifies EventSessionCreated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventSessionCreated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventSessionCreated`);
+            });
+
+            it(`Identifies EventSessionDeleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventSessionDeleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventSessionDeleted`);
+            });
+
+            it(`Identifies EventSessionUpdated`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventSessionUpdated())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventSessionUpdated`);
+            });
+
+            it(`Identifies EventTxCompleted`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_events_pb.EventTxCompleted())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.EventTxCompleted`);
+            });
+
+            it(`Identifies ContractSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ContractSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationRequest`);
+            });
+
+            it(`Identifies ContractSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ContractSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationResponse`);
+            });
+
+            it(`Identifies ContractSpecificationsAllRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ContractSpecificationsAllRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationsAllRequest`);
+            });
+
+            it(`Identifies ContractSpecificationsAllResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ContractSpecificationsAllResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ContractSpecificationsAllResponse`);
+            });
+
+            it(`Identifies OSAllLocatorsRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSAllLocatorsRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSAllLocatorsRequest`);
+            });
+
+            it(`Identifies OSAllLocatorsResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSAllLocatorsResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSAllLocatorsResponse`);
+            });
+
+            it(`Identifies OSLocatorParamsRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorParamsRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorParamsRequest`);
+            });
+
+            it(`Identifies OSLocatorParamsResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorParamsResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorParamsResponse`);
+            });
+
+            it(`Identifies OSLocatorRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorRequest`);
+            });
+
+            it(`Identifies OSLocatorResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorResponse`);
+            });
+
+            it(`Identifies OSLocatorsByScopeRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorsByScopeRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByScopeRequest`);
+            });
+
+            it(`Identifies OSLocatorsByScopeResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorsByScopeResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByScopeResponse`);
+            });
+
+            it(`Identifies OSLocatorsByURIRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorsByURIRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByURIRequest`);
+            });
+
+            it(`Identifies OSLocatorsByURIResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OSLocatorsByURIResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OSLocatorsByURIResponse`);
+            });
+
+            it(`Identifies OwnershipRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OwnershipRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OwnershipRequest`);
+            });
+
+            it(`Identifies OwnershipResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.OwnershipResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.OwnershipResponse`);
+            });
+
+            it(`Identifies QueryParamsRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.QueryParamsRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.QueryParamsRequest`);
+            });
+
+            it(`Identifies QueryParamsResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.QueryParamsResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.QueryParamsResponse`);
+            });
+
+            it(`Identifies RecordSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationRequest`);
+            });
+
+            it(`Identifies RecordSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationResponse`);
+            });
+
+            it(`Identifies RecordSpecificationsAllRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordSpecificationsAllRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsAllRequest`);
+            });
+
+            it(`Identifies RecordSpecificationsAllResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordSpecificationsAllResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsAllResponse`);
+            });
+
+            it(`Identifies RecordSpecificationsForContractSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordSpecificationsForContractSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsForContractSpecificationRequest`);
+            });
+
+            it(`Identifies RecordSpecificationsForContractSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordSpecificationsForContractSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordSpecificationsForContractSpecificationResponse`);
+            });
+
+            it(`Identifies RecordsAllRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordsAllRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsAllRequest`);
+            });
+
+            it(`Identifies RecordsAllResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordsAllResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsAllResponse`);
+            });
+
+            it(`Identifies RecordsRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordsRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsRequest`);
+            });
+
+            it(`Identifies RecordsResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.RecordsResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.RecordsResponse`);
+            });
+
+            it(`Identifies ScopeRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopeRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeRequest`);
+            });
+
+            it(`Identifies ScopeResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopeResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeResponse`);
+            });
+
+            it(`Identifies ScopeSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopeSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationRequest`);
+            });
+
+            it(`Identifies ScopeSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopeSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationResponse`);
+            });
+
+            it(`Identifies ScopeSpecificationsAllRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopeSpecificationsAllRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationsAllRequest`);
+            });
+
+            it(`Identifies ScopeSpecificationsAllResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopeSpecificationsAllResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopeSpecificationsAllResponse`);
+            });
+
+            it(`Identifies ScopesAllRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopesAllRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopesAllRequest`);
+            });
+
+            it(`Identifies ScopesAllResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ScopesAllResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ScopesAllResponse`);
+            });
+
+            it(`Identifies SessionsAllRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.SessionsAllRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsAllRequest`);
+            });
+
+            it(`Identifies SessionsAllResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.SessionsAllResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsAllResponse`);
+            });
+
+            it(`Identifies SessionsRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.SessionsRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsRequest`);
+            });
+
+            it(`Identifies SessionsResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.SessionsResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.SessionsResponse`);
+            });
+
+            it(`Identifies ValueOwnershipRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ValueOwnershipRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ValueOwnershipRequest`);
+            });
+
+            it(`Identifies ValueOwnershipResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_query_pb.ValueOwnershipResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.ValueOwnershipResponse`);
+            });
+
+            it(`Identifies MsgAddContractSpecToScopeSpecRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgAddContractSpecToScopeSpecRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddContractSpecToScopeSpecRequest`);
+            });
+
+            it(`Identifies MsgAddContractSpecToScopeSpecResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgAddContractSpecToScopeSpecResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddContractSpecToScopeSpecResponse`);
+            });
+
+            it(`Identifies MsgAddScopeDataAccessRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgAddScopeDataAccessRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeDataAccessRequest`);
+            });
+
+            it(`Identifies MsgAddScopeDataAccessResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgAddScopeDataAccessResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeDataAccessResponse`);
+            });
+
+            it(`Identifies MsgAddScopeOwnerRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgAddScopeOwnerRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeOwnerRequest`);
+            });
+
+            it(`Identifies MsgAddScopeOwnerResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgAddScopeOwnerResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgAddScopeOwnerResponse`);
+            });
+
+            it(`Identifies MsgBindOSLocatorRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgBindOSLocatorRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgBindOSLocatorRequest`);
+            });
+
+            it(`Identifies MsgBindOSLocatorResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgBindOSLocatorResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgBindOSLocatorResponse`);
+            });
+
+            it(`Identifies MsgDeleteContractSpecFromScopeSpecRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteContractSpecFromScopeSpecRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecFromScopeSpecRequest`);
+            });
+
+            it(`Identifies MsgDeleteContractSpecFromScopeSpecResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteContractSpecFromScopeSpecResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecFromScopeSpecResponse`);
+            });
+
+            it(`Identifies MsgDeleteContractSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteContractSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecificationRequest`);
+            });
+
+            it(`Identifies MsgDeleteContractSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteContractSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteContractSpecificationResponse`);
+            });
+
+            it(`Identifies MsgDeleteOSLocatorRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteOSLocatorRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteOSLocatorRequest`);
+            });
+
+            it(`Identifies MsgDeleteOSLocatorResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteOSLocatorResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteOSLocatorResponse`);
+            });
+
+            it(`Identifies MsgDeleteRecordRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteRecordRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordRequest`);
+            });
+
+            it(`Identifies MsgDeleteRecordResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteRecordResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordResponse`);
+            });
+
+            it(`Identifies MsgDeleteRecordSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteRecordSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordSpecificationRequest`);
+            });
+
+            it(`Identifies MsgDeleteRecordSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteRecordSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteRecordSpecificationResponse`);
+            });
+
+            it(`Identifies MsgDeleteScopeDataAccessRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeDataAccessRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeDataAccessRequest`);
+            });
+
+            it(`Identifies MsgDeleteScopeDataAccessResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeDataAccessResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeDataAccessResponse`);
+            });
+
+            it(`Identifies MsgDeleteScopeOwnerRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeOwnerRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeOwnerRequest`);
+            });
+
+            it(`Identifies MsgDeleteScopeOwnerResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeOwnerResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeOwnerResponse`);
+            });
+
+            it(`Identifies MsgDeleteScopeRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeRequest`);
+            });
+
+            it(`Identifies MsgDeleteScopeResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeResponse`);
+            });
+
+            it(`Identifies MsgDeleteScopeSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeSpecificationRequest`);
+            });
+
+            it(`Identifies MsgDeleteScopeSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgDeleteScopeSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgDeleteScopeSpecificationResponse`);
+            });
+
+            it(`Identifies MsgModifyOSLocatorRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgModifyOSLocatorRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgModifyOSLocatorRequest`);
+            });
+
+            it(`Identifies MsgModifyOSLocatorResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgModifyOSLocatorResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgModifyOSLocatorResponse`);
+            });
+
+            it(`Identifies MsgP8eMemorializeContractRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgP8eMemorializeContractRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgP8eMemorializeContractRequest`);
+            });
+
+            it(`Identifies MsgP8eMemorializeContractResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgP8eMemorializeContractResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgP8eMemorializeContractResponse`);
+            });
+
+            it(`Identifies MsgWriteContractSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteContractSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteContractSpecificationRequest`);
+            });
+
+            it(`Identifies MsgWriteContractSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteContractSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteContractSpecificationResponse`);
+            });
+
+            it(`Identifies MsgWriteP8eContractSpecRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteP8eContractSpecRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteP8eContractSpecRequest`);
+            });
+
+            it(`Identifies MsgWriteP8eContractSpecResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteP8eContractSpecResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteP8eContractSpecResponse`);
+            });
+
+            it(`Identifies MsgWriteRecordRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteRecordRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordRequest`);
+            });
+
+            it(`Identifies MsgWriteRecordResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteRecordResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordResponse`);
+            });
+
+            it(`Identifies MsgWriteRecordSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteRecordSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordSpecificationRequest`);
+            });
+
+            it(`Identifies MsgWriteRecordSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteRecordSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteRecordSpecificationResponse`);
+            });
+
+            it(`Identifies MsgWriteScopeRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteScopeRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeRequest`);
+            });
+
+            it(`Identifies MsgWriteScopeResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteScopeResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeResponse`);
+            });
+
+            it(`Identifies MsgWriteScopeSpecificationRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteScopeSpecificationRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeSpecificationRequest`);
+            });
+
+            it(`Identifies MsgWriteScopeSpecificationResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteScopeSpecificationResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteScopeSpecificationResponse`);
+            });
+
+            it(`Identifies MsgWriteSessionRequest`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteSessionRequest())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteSessionRequest`);
+            });
+
+            it(`Identifies MsgWriteSessionResponse`, async () => {
+                expect(getMessageTypeUrl(new provenance_metadata_v1_tx_pb.MsgWriteSessionResponse())).to.equal(`/${PROVENANCE_METADATA_V1_TYPE_PACKAGE}.MsgWriteSessionResponse`);
+            });
 
         });
 

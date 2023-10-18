@@ -1,5 +1,5 @@
 import * as google_protobuf_any_pb from 'google-protobuf/google/protobuf/any_pb';
-import * as grpc from 'grpc';
+import * as grpc from "@grpc/grpc-js";
 
 import { BaseRequest } from './BaseRequest';
 import { GasEstimate } from './GasEstimate';

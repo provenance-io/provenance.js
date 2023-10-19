@@ -11,13 +11,13 @@ OUTDIR=${3}
 
 npx grpc_tools_node_protoc \
   --js_out=import_style=commonjs,binary:"${OUTDIR}" \
-  --grpc_out="${OUTDIR}" \
+  --grpc_out=grpc_js:"${OUTDIR}" \
   --plugin=protoc-gen-grpc="${GRPC_TOOLS_NODE_PROTOC_PLUGIN}" \
   -I ${INCDIR} \
   "${INDIR}"/*.proto
 
 npx grpc_tools_node_protoc \
   --plugin=protoc-gen-ts="${PROTOC_GEN_TS_PATH}" \
-  --ts_out="${OUTDIR}" \
+  --ts_out=grpc_js:"${OUTDIR}" \
   -I ${INCDIR} \
   "${INDIR}"/*.proto

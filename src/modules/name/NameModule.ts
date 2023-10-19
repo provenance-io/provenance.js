@@ -1,5 +1,5 @@
 import * as jspb from 'google-protobuf';
-import * as grpc from 'grpc';
+import * as grpc from "@grpc/grpc-js";
 import { eachSeries } from 'async';
 
 import { 
